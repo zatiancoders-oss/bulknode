@@ -12,7 +12,20 @@
       "dest": "server.js"
     },
     {
-      "handle": "filesystem"
+      "src": "/(style.css|script.js|favicon.ico)",
+      "dest": "/$1"
+    },
+    {
+      "src": "/public/(.*)",
+      "dest": "/public/$1"
+    },
+    {
+      "src": "/",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "server.js"
     }
   ]
 }
