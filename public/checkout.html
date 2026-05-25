@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete Checkout - Bulk Node</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="dashboard.css">
+  <style>
+    .checkout-nav {
+      padding: 20px 40px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-sidebar);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .btn-back {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .btn-back:hover {
+      color: var(--primary);
+    }
+    .checkout-wrapper {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Simple Nav -->
+  <header class="checkout-nav">
+    <a href="/" class="sidebar-logo">
+      <span style="color: var(--primary);"><i class="fas fa-cube"></i></span>
+      <span>Bulk<span style="color: var(--primary);">Node</span></span>
+    </a>
+    <a href="/#pricing" class="btn-back"><i class="fas fa-arrow-left"></i> Back to Pricing</a>
+  </header>
+
+  <div class="checkout-wrapper">
+    <div class="top-bar">
+      <div>
+        <h1 class="page-title">Checkout Portal</h1>
+        <p class="page-subtitle">Configure your host name and finalize your high-speed container deployment.</p>
+      </div>
+    </div>
+
+    <div class="checkout-grid">
+      <!-- Checkout Form -->
+      <div class="checkout-card animate-fade-in">
+        <h2 class="checkout-title"><i class="fas fa-sliders-h" style="color: var(--primary); margin-right: 8px;"></i> 1. Configure Host</h2>
+        
+        <div class="form-group">
+          <label class="form-label">Server Host Name</label>
+          <input type="text" id="host-name" class="input-control" placeholder="my-awesome-server" value="My Epic Server">
+          <span style="font-size: 11px; color: var(--text-muted); margin-top: 4px; display: block;">This will identify your server in the dashboard.</span>
+        </div>
+
+        <div class="form-group" id="game-select-group" style="margin-top: 24px;">
+          <label class="form-label">Select Game / OS Template</label>
+          <select id="game-select" class="input-control" style="background: var(--bg-sidebar);">
+            <option value="Minecraft">Minecraft Java Edition</option>
+            <option value="Minecraft Bedrock">Minecraft Bedrock Edition</option>
+            <option value="ARK">ARK: Survival Evolved</option>
+            <option value="Rust">Rust</option>
+            <option value="CS2">Counter-Strike 2</option>
+            <option value="FiveM">FiveM GTA V</option>
+            <option value="Ubuntu 22.04 LTS">Ubuntu 22.04 LTS (Recommended VPS)</option>
+            <option value="Debian 12">Debian 12 Bookworm</option>
+            <option value="Windows Server 2022">Windows Server 2022</option>
+          </select>
+        </div>
+
+        <h2 class="checkout-title" style="margin-top: 40px;"><i class="fas fa-credit-card" style="color: var(--secondary); margin-right: 8px;"></i> 2. Select Payment Method</h2>
+        
+        <div class="payment-methods">
+          <div class="payment-method active" id="method-upi">
+            <i class="fas fa-mobile-alt"></i>
+            <span>UPI / QR Scan</span>
+          </div>
+          <div class="payment-method" id="method-card">
+            <i class="far fa-credit-card"></i>
+            <span>Credit / Debit Card</span>
+          </div>
+        </div>
+
+        <!-- UPI Option -->
+        <div id="payment-upi" class="upi-form">
+          <div class="qr-code-placeholder">
+            <!-- Simulated QR code -->
+            <svg viewBox="0 0 100 100" style="width: 100%; height: 100%;">
+              <rect x="10" y="10" width="20" height="20" fill="#020710"/>
+              <rect x="70" y="10" width="20" height="20" fill="#020710"/>
+              <rect x="10" y="70" width="20" height="20" fill="#020710"/>
+              <rect x="15" y="15" width="10" height="10" fill="#fff"/>
+              <rect x="75" y="15" width="10" height="10" fill="#fff"/>
+              <rect x="15" y="75" width="10" height="10" fill="#fff"/>
+              <rect x="40" y="25" width="8" height="30" fill="#020710"/>
+              <rect x="25" y="45" width="30" height="8" fill="#020710"/>
+              <rect x="50" y="60" width="15" height="15" fill="#020710"/>
+              <rect x="70" y="70" width="20" height="20" fill="#020710"/>
+            </svg>
+          </div>
+          <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 6px;">Scan this QR with BHIM, Google Pay, PhonePe, or Paytm</p>
+          <span style="font-size: 11px; color: var(--text-muted);">Simulator Mode: Payment will auto-authorize upon clicking deploy.</span>
+        </div>
+
+        <!-- Card Option -->
+        <div id="payment-card" style="display: none; margin-top: 16px;">
+          <div class="form-group">
+            <label class="form-label">Cardholder Name</label>
+            <input type="text" class="input-control" placeholder="Alex Mercer">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Card Number</label>
+            <input type="text" class="input-control" placeholder="4111 2222 3333 4444">
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="form-group">
+              <label class="form-label">Expiry Date</label>
+              <input type="text" class="input-control" placeholder="MM/YY">
+            </div>
+            <div class="form-group">
+              <label class="form-label">CVV</label>
+              <input type="password" class="input-control" placeholder="•••">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Checkout Summary Sidebar -->
+      <div class="checkout-summary animate-fade-in" style="animation-delay: 0.1s;">
+        <h3 style="font-size: 18px; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 12px;">Order Summary</h3>
+        
+        <div class="summary-row">
+          <span>Plan selected:</span>
+          <strong id="summary-plan" style="color: var(--primary);">Pro Server</strong>
+        </div>
+        <div class="summary-row">
+          <span>Deployment Category:</span>
+          <span id="summary-type">Game Server</span>
+        </div>
+        <div class="summary-row">
+          <span>Data Center Region:</span>
+          <span>Mumbai, India 🇮🇳</span>
+        </div>
+        <div class="summary-row">
+          <span>Contract Period:</span>
+          <span>Monthly (Recurring)</span>
+        </div>
+
+        <div class="summary-row total" style="margin-top: 24px; margin-bottom: 24px;">
+          <span>Monthly Subtotal:</span>
+          <span id="summary-price" style="color: var(--primary);">₹249</span>
+        </div>
+
+        <button class="auth-btn" id="btn-pay-deploy" style="margin-top: 0; background: linear-gradient(135deg, var(--primary), var(--secondary));">
+          Authorize &amp; Deploy <i class="fas fa-rocket"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Deploying Loader Screen -->
+  <div class="deploy-loader" id="deploy-loader">
+    <div class="spinner"></div>
+    <h2 style="font-size: 24px; font-weight: 800;" id="loader-title">Allocating Node Resources...</h2>
+    <p style="color: var(--text-secondary); font-size: 14px;" id="loader-subtitle">Generating virtual network interfaces and setting port configurations.</p>
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--primary); margin-top: 20px;" id="loader-log">
+      &gt; Initializing Docker Daemon...
+    </div>
+  </div>
+
+  <script>
+    // Verify login before proceeding
+    const token = localStorage.getItem('token');
+    if (!token) {
+      // Redirect to login page and keep return redirect query
+      window.location.href = '/public/auth.html';
+    }
+
+    // Get Query Parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const plan = urlParams.get('plan') || 'Pro';
+    const type = urlParams.get('type') || 'game';
+    const price = urlParams.get('price') || '249';
+
+    // Populate order summary
+    document.getElementById('summary-plan').textContent = plan;
+    document.getElementById('summary-type').textContent = type.toUpperCase() === 'VPS' ? 'VPS Server Node' : 'Game Server Container';
+    document.getElementById('summary-price').textContent = '₹' + price;
+
+    // Autofill templates
+    const gameSelect = document.getElementById('game-select');
+    if (type.toLowerCase() === 'vps') {
+      gameSelect.value = "Ubuntu 22.04 LTS";
+    } else {
+      gameSelect.value = "Minecraft";
+    }
+
+    // Payment method toggles
+    const methodUpi = document.getElementById('method-upi');
+    const methodCard = document.getElementById('method-card');
+    const paymentUpi = document.getElementById('payment-upi');
+    const paymentCard = document.getElementById('payment-card');
+
+    methodUpi.addEventListener('click', () => {
+      methodUpi.classList.add('active');
+      methodCard.classList.remove('active');
+      paymentUpi.style.display = 'block';
+      paymentCard.style.display = 'none';
+    });
+
+    methodCard.addEventListener('click', () => {
+      methodCard.classList.add('active');
+      methodUpi.classList.remove('active');
+      paymentCard.style.display = 'block';
+      paymentUpi.style.display = 'none';
+    });
+
+    // Pay and Deploy handler
+    const btnPayDeploy = document.getElementById('btn-pay-deploy');
+    const loaderScreen = document.getElementById('deploy-loader');
+    const loaderTitle = document.getElementById('loader-title');
+    const loaderSubtitle = document.getElementById('loader-subtitle');
+    const loaderLog = document.getElementById('loader-log');
+
+    btnPayDeploy.addEventListener('click', async () => {
+      const serverName = document.getElementById('host-name').value || 'BulkNode Instance';
+      const selectedGame = gameSelect.value;
+
+      // Show loader
+      loaderScreen.classList.add('visible');
+
+      // Loader logs animation
+      const steps = [
+        { title: "Allocating Dedicated Port...", sub: "Routing incoming ports and establishing private virtual subnet.", log: "> iptables -A FORWARD -p tcp --dport 25565 -j ACCEPT" },
+        { title: "Pulling OS Template container...", sub: "Downloading required server assets and precompiled binary structures.", log: "> docker pull pterodactyl/images:minecraft" },
+        { title: "Generating credentials...", sub: "Finalizing server configuration files and loading user access tokens.", log: "> writing server.properties && generating SSH keys..." },
+        { title: "Finalizing deployment...", sub: "Spinning up core hypervisor and generating diagnostics panel endpoints.", log: "> OK. Instance online." }
+      ];
+
+      for (let i = 0; i < steps.length; i++) {
+        await new Promise(resolve => setTimeout(resolve, 800));
+        loaderTitle.textContent = steps[i].title;
+        loaderSubtitle.textContent = steps[i].sub;
+        loaderLog.textContent = steps[i].log;
+      }
+
+      // API request to backend to create the server
+      try {
+        const response = await fetch('/api/servers', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            name: serverName,
+            plan: plan,
+            type: type,
+            game: selectedGame
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to deploy server instance");
+        }
+
+        // Redirect to dashboard page
+        window.location.href = '/public/dashboard.html';
+      } catch (err) {
+        alert(err.message || "An error occurred while creating the server. Please try again.");
+        loaderScreen.classList.remove('visible');
+      }
+    });
+  </script>
+</body>
+</html>

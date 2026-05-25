@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NVMe Web Hosting India - Bulk Node</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+  <!-- Particle Canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Navigation -->
+  <nav class="navbar scrolled">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="4" fill="url(#g1)"/>
+            <circle cx="8" cy="10" r="3" fill="url(#g1)" opacity="0.8"/>
+            <circle cx="32" cy="10" r="3" fill="url(#g1)" opacity="0.8"/>
+            <circle cx="8" cy="30" r="3" fill="url(#g1)" opacity="0.8"/>
+            <circle cx="32" cy="30" r="3" fill="url(#g1)" opacity="0.8"/>
+            <line x1="20" y1="20" x2="8" y2="10" stroke="url(#g2)" stroke-width="1.5"/>
+            <line x1="20" y1="20" x2="32" y2="10" stroke="url(#g2)" stroke-width="1.5"/>
+            <line x1="20" y1="20" x2="8" y2="30" stroke="url(#g2)" stroke-width="1.5"/>
+            <line x1="20" y1="20" x2="32" y2="30" stroke="url(#g2)" stroke-width="1.5"/>
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#00ff88"/>
+                <stop offset="100%" stop-color="#00cfff"/>
+              </linearGradient>
+              <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#00ff88" stop-opacity="0.6"/>
+                <stop offset="100%" stop-color="#00cfff" stop-opacity="0.6"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="logo-text">Bulk<span class="logo-accent">Node</span></span>
+      </a>
+
+      <div class="nav-links">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/public/minecraft.html" class="nav-link">Minecraft</a>
+        <a href="/public/vps-hosting.html" class="nav-link">VPS</a>
+        <a href="/public/web-hosting.html" class="nav-link" style="color: var(--primary);">Web Hosting</a>
+        <a href="/public/bot-hosting.html" class="nav-link">Bot Hosting</a>
+        <a href="/public/free-hosting.html" class="nav-link">Free Hosting</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="/public/auth.html" class="btn-outline-sm">Login</a>
+        <a href="/public/auth.html" class="btn-primary-sm">Dashboard</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+    <div class="hero-container">
+      <div class="hero-badge">
+        <span class="badge-dot"></span> 🚀 NVMe Web Hosting with LiteSpeed Web Server
+      </div>
+      <h1 class="hero-title">
+        Lightning Fast <span class="gradient-text">Web Hosting</span><br/>
+        cPanel &amp; Free SSL
+      </h1>
+      <p class="hero-subtitle">
+        Deploy WordPress, Node, or static HTML web properties in a single click. <br>
+        Speed up loading times up to 10x with LiteSpeed Cache engines and dedicated databases.
+      </p>
+      <div class="hero-actions">
+        <a href="#plans" class="btn-hero-primary">
+          <i class="fas fa-globe"></i> View Web Plans
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Web Plans Section -->
+  <section class="pricing" id="plans" style="padding-top: 50px;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Web Pricing</div>
+        <h2 class="section-title">Shared <span class="gradient-text">NVMe Hosting Packs</span></h2>
+        <p class="section-subtitle">Affordable, reliable hosting built for portfolio websites, startups, and blogs.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="plan-name">Shared Starter</div>
+          <div class="plan-price">
+            <span class="currency">₹</span>
+            <span class="amount">49</span>
+            <span class="period">/month</span>
+          </div>
+          <div class="plan-desc">For small personal websites</div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> Host 1 Website</li>
+            <li><i class="fas fa-check"></i> 5GB NVMe SSD</li>
+            <li><i class="fas fa-check"></i> 100GB Monthly Bandwidth</li>
+            <li><i class="fas fa-check"></i> 2 Email Accounts</li>
+            <li><i class="fas fa-check"></i> Free SSL Certificate</li>
+            <li><i class="fas fa-check"></i> cPanel Access Panel</li>
+          </ul>
+          <a href="/public/checkout.html?plan=Web+Starter&type=web&price=49" class="plan-btn">Get Started</a>
+        </div>
+
+        <div class="pricing-card popular">
+          <div class="popular-badge">⭐ Popular</div>
+          <div class="plan-name">Shared Pro</div>
+          <div class="plan-price">
+            <span class="currency">₹</span>
+            <span class="amount">129</span>
+            <span class="period">/month</span>
+          </div>
+          <div class="plan-desc">For developers and small business</div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> Host 10 Websites</li>
+            <li><i class="fas fa-check"></i> 30GB NVMe SSD</li>
+            <li><i class="fas fa-check"></i> Unlimited Bandwidth</li>
+            <li><i class="fas fa-check"></i> Free SSL Certificates</li>
+            <li><i class="fas fa-check"></i> Unlimited SQL Databases</li>
+            <li><i class="fas fa-check"></i> 1-Click WP Auto-installer</li>
+          </ul>
+          <a href="/public/checkout.html?plan=Web+Pro&type=web&price=129" class="plan-btn popular-btn">Get Started</a>
+        </div>
+
+        <div class="pricing-card">
+          <div class="plan-name">Web Business</div>
+          <div class="plan-price">
+            <span class="currency">₹</span>
+            <span class="amount">299</span>
+            <span class="period">/month</span>
+          </div>
+          <div class="plan-desc">Best for e-commerce store needs</div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> Host Unlimited Websites</li>
+            <li><i class="fas fa-check"></i> 100GB NVMe SSD</li>
+            <li><i class="fas fa-check"></i> Unlimited Bandwidth</li>
+            <li><i class="fas fa-check"></i> Free Domain Name</li>
+            <li><i class="fas fa-check"></i> Dedicated IP proxy</li>
+            <li><i class="fas fa-check"></i> 24/7 Phone &amp; Ticket Support</li>
+          </ul>
+          <a href="/public/checkout.html?plan=Web+Business&type=web&price=299" class="plan-btn">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Features -->
+  <section class="features">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Optimization</div>
+        <h2 class="section-title">Everything Integrated for <span class="gradient-text">Speed</span></h2>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-toolbox"></i></div>
+          <h4>Premium cPanel Panel</h4>
+          <p>The global standard in web hosting control. Manage files, DNS zones, subdomains, redirection rules, and MySQL databases effortlessly.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fab fa-wordpress"></i></div>
+          <h4>1-Click Installer</h4>
+          <p>Install WordPress, Joomla, Drupal, Prestashop, or Magento in under 10 seconds. Softaculous manager updates scripts automatically.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-lock"></i></div>
+          <h4>AutoSSL Protection</h4>
+          <p>Keep connection logs safe. All web files and domains deployed automatically pull Let's Encrypt certificates to show HTTPS status.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-tachometer-alt"></i></div>
+          <h4>LiteSpeed Web Server</h4>
+          <p>Up to 80x faster connection processing than traditional Apache servers. Includes LS Cache engine to speed up page loads.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2025 Bulk Node. All rights reserved. Made with ❤️ in India 🇮🇳</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

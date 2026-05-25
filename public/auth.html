@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Access - Bulk Node</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+  <div class="auth-wrapper">
+    <div class="auth-container animate-fade-in">
+      <div class="auth-header">
+        <a href="/" class="auth-logo">
+          <span style="color: var(--primary);"><i class="fas fa-cube"></i></span>
+          <span>Bulk<span style="color: var(--primary);">Node</span></span>
+        </a>
+        <p class="auth-subtitle" id="auth-subtitle-text">Log in to manage your game servers &amp; VPS</p>
+      </div>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tab-login">Login</button>
+        <button class="auth-tab" id="tab-register">Register</button>
+      </div>
+
+      <div class="auth-alert error" id="auth-error" style="display: none;"></div>
+      <div class="auth-alert success" id="auth-success" style="display: none;"></div>
+
+      <!-- Login Form -->
+      <form id="form-login">
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" id="login-email" class="input-control" placeholder="name@example.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input type="password" id="login-password" class="input-control" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="auth-btn">Sign In <i class="fas fa-sign-in-alt"></i></button>
+      </form>
+
+      <!-- Register Form -->
+      <form id="form-register" style="display: none;">
+        <div class="form-group">
+          <label class="form-label">Your Name</label>
+          <input type="text" id="register-name" class="input-control" placeholder="Alex Mercer" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" id="register-email" class="input-control" placeholder="alex@example.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input type="password" id="register-password" class="input-control" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="auth-btn">Create Account <i class="fas fa-user-plus"></i></button>
+      </form>
+
+      <div class="demo-login-tip">
+        ⚡ Demo Login: <br>
+        Email: <code>demo@bulknode.com</code> | Pass: <code>demo123</code>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const tabLogin = document.getElementById('tab-login');
+    const tabRegister = document.getElementById('tab-register');
+    const formLogin = document.getElementById('form-login');
+    const formRegister = document.getElementById('form-register');
+    const subtitleText = document.getElementById('auth-subtitle-text');
+    const errorEl = document.getElementById('auth-error');
+    const successEl = document.getElementById('auth-success');
+
+    // Switch Tabs
+    tabLogin.addEventListener('click', () => {
+      tabLogin.classList.add('active');
+      tabRegister.classList.remove('active');
+      formLogin.style.display = 'block';
+      formRegister.style.display = 'none';
+      subtitleText.textContent = 'Log in to manage your game servers & VPS';
+      hideAlerts();
+    });
+
+    tabRegister.addEventListener('click', () => {
+      tabRegister.classList.add('active');
+      tabLogin.classList.remove('active');
+      formLogin.style.display = 'none';
+      formRegister.style.display = 'block';
+      subtitleText.textContent = 'Create a secure client panel account';
+      hideAlerts();
+    });
+
+    function hideAlerts() {
+      errorEl.style.display = 'none';
+      successEl.style.display = 'none';
+    }
+
+    function showError(msg) {
+      errorEl.textContent = msg;
+      errorEl.style.display = 'block';
+      successEl.style.display = 'none';
+    }
+
+    function showSuccess(msg) {
+      successEl.textContent = msg;
+      successEl.style.display = 'block';
+      errorEl.style.display = 'none';
+    }
+
+    // Handle Login
+    formLogin.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      hideAlerts();
+      const email = document.getElementById('login-email').value;
+      const password = document.getElementById('login-password').value;
+
+      try {
+        const response = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Login failed");
+        }
+
+        showSuccess("Login successful! Redirecting...");
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user', JSON.stringify(data.user));
+
+        setTimeout(() => {
+          window.location.href = '/public/dashboard.html';
+        }, 1000);
+      } catch (err) {
+        showError(err.message);
+      }
+    });
+
+    // Handle Registration
+    formRegister.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      hideAlerts();
+      const name = document.getElementById('register-name').value;
+      const email = document.getElementById('register-email').value;
+      const password = document.getElementById('register-password').value;
+
+      try {
+        const response = await fetch('/api/auth/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, password })
+        });
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Registration failed");
+        }
+
+        showSuccess("Account created! Redirecting to dashboard...");
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user', JSON.stringify(data.user));
+
+        setTimeout(() => {
+          window.location.href = '/public/dashboard.html';
+        }, 1200);
+      } catch (err) {
+        showError(err.message);
+      }
+    });
+
+    // Auto-login check
+    if (localStorage.getItem('token')) {
+      window.location.href = '/public/dashboard.html';
+    }
+  </script>
+</body>
+</html>

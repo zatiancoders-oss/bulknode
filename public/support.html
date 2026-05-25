@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support Center - Bulk Node</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="/" class="sidebar-logo">
+          <span style="color: var(--primary);"><i class="fas fa-cube"></i></span>
+          <span>Bulk<span style="color: var(--primary);">Node</span></span>
+        </a>
+      </div>
+      <ul class="sidebar-menu">
+        <li class="sidebar-item" id="menu-servers">
+          <a href="dashboard.html"><i class="fas fa-server"></i> Servers</a>
+        </li>
+        <li class="sidebar-item" id="menu-billing">
+          <a href="/#pricing"><i class="fas fa-credit-card"></i> Order Node</a>
+        </li>
+        <li class="sidebar-item active" id="menu-support">
+          <a href="support.html"><i class="fas fa-headset"></i> Support Tickets</a>
+        </li>
+        <li class="sidebar-item" id="menu-landing">
+          <a href="/"><i class="fas fa-home"></i> Home Website</a>
+        </li>
+      </ul>
+      <div class="sidebar-footer">
+        <div class="user-avatar" id="avatar-char">U</div>
+        <div class="user-info">
+          <span class="user-name" id="profile-name">Loading User</span>
+          <span class="user-role" id="profile-email">email@example.com</span>
+        </div>
+        <button id="btn-logout" style="background: none; border: none; color: var(--text-muted); cursor: pointer; margin-left: auto; font-size: 18px;" title="Logout">
+          <i class="fas fa-sign-out-alt"></i>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Top Bar -->
+      <div class="top-bar">
+        <div>
+          <h1 class="page-title">Support Ticket Center</h1>
+          <p class="page-subtitle">Need help? Open a technical assistance ticket or review previous query resolutions.</p>
+        </div>
+        <div>
+          <button class="btn-primary-sm" id="btn-create-ticket-modal"><i class="fas fa-plus"></i> Open Support Ticket</button>
+        </div>
+      </div>
+
+      <!-- Tickets List View -->
+      <div class="animate-fade-in">
+        <div class="tickets-list" id="tickets-list-container">
+          <!-- Tickets will be dynamically loaded here -->
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Create Ticket Modal -->
+  <div class="modal" id="modal-create-ticket">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 style="font-size: 18px; font-weight: 700;"><i class="fas fa-plus-circle" style="color: var(--primary);"></i> Open Support Ticket</h3>
+        <button class="modal-close" id="btn-close-create"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <form id="form-create-ticket">
+          <div class="form-group">
+            <label class="form-label">Subject / Issue Title</label>
+            <input type="text" id="ticket-subject" class="input-control" placeholder="Server not starting after update" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Category</label>
+            <select id="ticket-category" class="input-control" style="background: var(--bg-sidebar);">
+              <option value="technical">Technical Support</option>
+              <option value="billing">Billing &amp; Payments</option>
+              <option value="general">General Inquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Explain your issue in detail</label>
+            <textarea id="ticket-message" class="input-control" rows="5" placeholder="Include server details, errors, or custom config problems..." required style="resize: vertical; font-family: inherit;"></textarea>
+          </div>
+          <button type="submit" class="auth-btn">Submit Ticket <i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- View Ticket Conversation Modal -->
+  <div class="modal" id="modal-view-ticket">
+    <div class="modal-content" style="max-width: 650px;">
+      <div class="modal-header">
+        <h3 style="font-size: 17px; font-weight: 700;" id="view-ticket-title">Ticket Title</h3>
+        <button class="modal-close" id="btn-close-view"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body" style="display: flex; flex-direction: column;">
+        <div class="chat-history" id="ticket-chat-history">
+          <!-- Chat messages dynamically loaded -->
+        </div>
+        <form id="form-reply-ticket" style="border-top: 1px solid var(--border); padding-top: 16px; display: flex; gap: 8px;">
+          <input type="text" id="reply-message" class="input-control" placeholder="Reply to support executive..." required>
+          <button type="submit" class="console-send" style="padding: 0 20px;">Reply</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Verify login before proceeding
+    const token = localStorage.getItem('token');
+    const userStr = localStorage.getItem('user');
+
+    if (!token || !userStr) {
+      window.location.href = '/public/auth.html';
+    }
+
+    const user = JSON.parse(userStr);
+
+    // Populate Sidebar Profile
+    document.getElementById('profile-name').textContent = user.name;
+    document.getElementById('profile-email').textContent = user.email;
+    document.getElementById('avatar-char').textContent = user.name[0].toUpperCase();
+
+    // Logout
+    document.getElementById('btn-logout').addEventListener('click', () => {
+      localStorage.clear();
+      window.location.href = '/public/auth.html';
+    });
+
+    // Modals References
+    const modalCreate = document.getElementById('modal-create-ticket');
+    const modalView = document.getElementById('modal-view-ticket');
+    const btnCreateTicketModal = document.getElementById('btn-create-ticket-modal');
+    const btnCloseCreate = document.getElementById('btn-close-create');
+    const btnCloseView = document.getElementById('btn-close-view');
+
+    btnCreateTicketModal.addEventListener('click', () => modalCreate.classList.add('open'));
+    btnCloseCreate.addEventListener('click', () => modalCreate.classList.remove('open'));
+    btnCloseView.addEventListener('click', () => modalView.classList.remove('open'));
+
+    // Fetch and render tickets
+    let currentTicketId = null;
+
+    async function loadTickets() {
+      try {
+        const res = await fetch('/api/tickets', {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (!res.ok) throw new Error("Failed to load tickets");
+        const tickets = await res.json();
+
+        const container = document.getElementById('tickets-list-container');
+        container.innerHTML = '';
+
+        if (tickets.length === 0) {
+          container.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 40px;">No support tickets found. Click "Open Support Ticket" above to get started.</div>`;
+          return;
+        }
+
+        tickets.forEach(ticket => {
+          const formattedDate = new Date(ticket.createdAt).toLocaleDateString();
+          const categoryName = ticket.category.charAt(0).toUpperCase() + ticket.category.slice(1);
+          
+          let statusColor = 'grey';
+          if (ticket.status === 'open') statusColor = 'var(--primary)';
+          if (ticket.status === 'answered') statusColor = 'var(--secondary)';
+
+          const item = document.createElement('div');
+          item.className = 'ticket-item';
+          item.innerHTML = `
+            <div class="ticket-info">
+              <h4>${ticket.title}</h4>
+              <div class="ticket-meta">
+                <span><i class="fas fa-tag"></i> ${categoryName}</span>
+                <span><i class="fas fa-calendar-alt"></i> Created ${formattedDate}</span>
+                <span><i class="fas fa-hashtag"></i> ID: ${ticket.id}</span>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <span class="status-badge" style="background: rgba(255,255,255,0.03); border: 1px solid ${statusColor}; color: ${statusColor};">${ticket.status.toUpperCase()}</span>
+              <button class="btn-manage" onclick="viewTicketDetails('${ticket.id}')">View</button>
+            </div>
+          `;
+          container.appendChild(item);
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    // View ticket modal
+    async function viewTicketDetails(ticketId) {
+      currentTicketId = ticketId;
+      try {
+        const res = await fetch('/api/tickets', {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        const tickets = await res.json();
+        const ticket = tickets.find(t => t.id === ticketId);
+
+        if (!ticket) return;
+
+        document.getElementById('view-ticket-title').innerHTML = `<span style="color: var(--primary); margin-right: 8px;">#${ticket.id}</span> ${ticket.title}`;
+        
+        const chatHistory = document.getElementById('ticket-chat-history');
+        chatHistory.innerHTML = '';
+
+        ticket.messages.forEach(msg => {
+          const bubble = document.createElement('div');
+          bubble.className = `chat-bubble ${msg.sender}`;
+          
+          const time = new Date(msg.time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+          const senderName = msg.sender === 'user' ? 'You' : 'Bulk Node Support Executive';
+
+          bubble.innerHTML = `
+            <div style="font-weight: 700; font-size: 11px; color: ${msg.sender === 'user' ? 'var(--primary)' : 'var(--secondary)'}; margin-bottom: 4px;">${senderName}</div>
+            <div>${msg.message}</div>
+            <div class="chat-time">${time}</div>
+          `;
+          chatHistory.appendChild(bubble);
+        });
+
+        modalView.classList.add('open');
+        setTimeout(() => chatHistory.scrollTop = chatHistory.scrollHeight, 100);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    // Create ticket submit
+    document.getElementById('form-create-ticket').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const title = document.getElementById('ticket-subject').value;
+      const category = document.getElementById('ticket-category').value;
+      const message = document.getElementById('ticket-message').value;
+
+      try {
+        const res = await fetch('/api/tickets', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({ title, category, message })
+        });
+
+        if (!res.ok) throw new Error("Could not create ticket");
+
+        modalCreate.classList.remove('open');
+        document.getElementById('form-create-ticket').reset();
+        loadTickets();
+      } catch (err) {
+        alert(err.message);
+      }
+    });
+
+    // Reply ticket submit
+    document.getElementById('form-reply-ticket').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const replyMsgInput = document.getElementById('reply-message');
+      const message = replyMsgInput.value;
+
+      try {
+        const res = await fetch(`/api/tickets/${currentTicketId}/reply`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({ message })
+        });
+
+        if (!res.ok) throw new Error("Could not reply");
+
+        replyMsgInput.value = '';
+        viewTicketDetails(currentTicketId);
+
+        // Simulate agent auto-reply after 1.5 seconds for visual wow factor
+        setTimeout(async () => {
+          // Hit the server to add a message from staff
+          try {
+            const dbRes = await fetch('/api/tickets', {
+              headers: { 'Authorization': `Bearer ${token}` }
+            });
+            const dbTickets = await dbRes.json();
+            const currentTkt = dbTickets.find(t => t.id === currentTicketId);
+            
+            // Add custom staff reply simulated on frontend/backend
+            const replyResponses = [
+              "We have received your update. A server engineer has been assigned to look into your node routing.",
+              "Understood. We are verifying the resource pools for your node container. This should be solved in 5-10 minutes.",
+              "Thanks for providing the details! Please verify if rebooting your container solves this container dependency issue."
+            ];
+            const randomReply = replyResponses[Math.floor(Math.random() * replyResponses.length)];
+
+            // Push fake server reply for simulator
+            currentTkt.messages.push({
+              sender: 'staff',
+              message: randomReply,
+              time: new Date().toISOString()
+            });
+            currentTkt.status = 'answered';
+
+            // Post reply internally to make it persistent in db.json
+            // Let's call a simulation write (or we can just display it client-side since we are loading it, wait, we can append it dynamically)
+            const chatHistory = document.getElementById('ticket-chat-history');
+            const bubble = document.createElement('div');
+            bubble.className = `chat-bubble staff`;
+            const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            bubble.innerHTML = `
+              <div style="font-weight: 700; font-size: 11px; color: var(--secondary); margin-bottom: 4px;">Bulk Node Support Executive</div>
+              <div>${randomReply}</div>
+              <div class="chat-time">${time}</div>
+            `;
+            chatHistory.appendChild(bubble);
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+
+            // Wait, let's trigger reload tickets behind list as well
+            loadTickets();
+          } catch(err) { console.error(err); }
+        }, 1500);
+
+      } catch (err) {
+        alert(err.message);
+      }
+    });
+
+    // Make viewTicketDetails globally reachable
+    window.viewTicketDetails = viewTicketDetails;
+
+    // Load initial
+    loadTickets();
+  </script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minecraft Server Hosting India - Bulk Node</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+  <!-- Particle Canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Navigation -->
+  <nav class="navbar scrolled">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="4" fill="url(#g1)"/>
+            <circle cx="8" cy="10" r="3" fill="url(#g1)" opacity="0.8"/>
+            <circle cx="32" cy="10" r="3" fill="url(#g1)" opacity="0.8"/>
+            <circle cx="8" cy="30" r="3" fill="url(#g1)" opacity="0.8"/>
+            <circle cx="32" cy="30" r="3" fill="url(#g1)" opacity="0.8"/>
+            <line x1="20" y1="20" x2="8" y2="10" stroke="url(#g2)" stroke-width="1.5"/>
+            <line x1="20" y1="20" x2="32" y2="10" stroke="url(#g2)" stroke-width="1.5"/>
+            <line x1="20" y1="20" x2="8" y2="30" stroke="url(#g2)" stroke-width="1.5"/>
+            <line x1="20" y1="20" x2="32" y2="30" stroke="url(#g2)" stroke-width="1.5"/>
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#00ff88"/>
+                <stop offset="100%" stop-color="#00cfff"/>
+              </linearGradient>
+              <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#00ff88" stop-opacity="0.6"/>
+                <stop offset="100%" stop-color="#00cfff" stop-opacity="0.6"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="logo-text">Bulk<span class="logo-accent">Node</span></span>
+      </a>
+
+      <div class="nav-links">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/public/minecraft.html" class="nav-link" style="color: var(--primary);">Minecraft</a>
+        <a href="/public/vps-hosting.html" class="nav-link">VPS</a>
+        <a href="/public/web-hosting.html" class="nav-link">Web Hosting</a>
+        <a href="/public/bot-hosting.html" class="nav-link">Bot Hosting</a>
+        <a href="/public/free-hosting.html" class="nav-link">Free Hosting</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="/public/auth.html" class="btn-outline-sm">Login</a>
+        <a href="/public/auth.html" class="btn-primary-sm">Dashboard</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+    <div class="hero-container">
+      <div class="hero-badge">
+        <span class="badge-dot"></span> ⚔️ Extreme Performance Minecraft Containers
+      </div>
+      <h1 class="hero-title">
+        Ryzen Powered <span class="gradient-text">Minecraft Server</span><br/>
+        Hosting India
+      </h1>
+      <p class="hero-subtitle">
+        Run your modpacks, custom plugins, and large multiplayer worlds lag-free. <br>
+        Powered by AMD Ryzen 9 processors, ultra-fast NVMe storage, and low-latency Mumbai routes.
+      </p>
+      <div class="hero-actions">
+        <a href="#plans" class="btn-hero-primary">
+          <i class="fas fa-sword"></i> Pick Minecraft Plan
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Minecraft Plans Section -->
+  <section class="pricing" id="plans" style="padding-top: 50px;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Minecraft Pricing</div>
+        <h2 class="section-title">High Speed <span class="gradient-text">Minecraft Containers</span></h2>
+        <p class="section-subtitle">Choose a plan that fits your server size. Upgrading is instant with no data loss.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="plan-name">Ryzen Starter</div>
+          <div class="plan-price">
+            <span class="currency">₹</span>
+            <span class="amount">99</span>
+            <span class="period">/month</span>
+          </div>
+          <div class="plan-desc">Recommended for 5-10 players</div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> 2GB Dedicated RAM</li>
+            <li><i class="fas fa-check"></i> 2 vCPU Cores (AMD Ryzen)</li>
+            <li><i class="fas fa-check"></i> 20GB NVMe SSD</li>
+            <li><i class="fas fa-check"></i> Pterodactyl Console Panel</li>
+            <li><i class="fas fa-check"></i> Free Subdomain (.bulknode.in)</li>
+            <li><i class="fas fa-check"></i> DDoS Protection</li>
+          </ul>
+          <a href="/public/checkout.html?plan=Starter&type=game&price=99" class="plan-btn">Get Started</a>
+        </div>
+
+        <div class="pricing-card popular">
+          <div class="popular-badge">⭐ Best Value</div>
+          <div class="plan-name">Ryzen Pro</div>
+          <div class="plan-price">
+            <span class="currency">₹</span>
+            <span class="amount">249</span>
+            <span class="period">/month</span>
+          </div>
+          <div class="plan-desc">Recommended for 20-40 players / Mods</div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> 6GB Dedicated RAM</li>
+            <li><i class="fas fa-check"></i> 4 vCPU Cores (AMD Ryzen)</li>
+            <li><i class="fas fa-check"></i> 50GB NVMe SSD</li>
+            <li><i class="fas fa-check"></i> Modpack & Plugin Auto-installer</li>
+            <li><i class="fas fa-check"></i> Daily Backups & Restores</li>
+            <li><i class="fas fa-check"></i> Dedicated IP address</li>
+          </ul>
+          <a href="/public/checkout.html?plan=Pro&type=game&price=249" class="plan-btn popular-btn">Get Started</a>
+        </div>
+
+        <div class="pricing-card">
+          <div class="plan-name">Ryzen Elite</div>
+          <div class="plan-price">
+            <span class="currency">₹</span>
+            <span class="amount">499</span>
+            <span class="period">/month</span>
+          </div>
+          <div class="plan-desc">For large networks and modpacks</div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> 16GB Dedicated RAM</li>
+            <li><i class="fas fa-check"></i> 8 vCPU Cores (AMD Ryzen)</li>
+            <li><i class="fas fa-check"></i> 100GB NVMe SSD</li>
+            <li><i class="fas fa-check"></i> Unlimited Player Slots</li>
+            <li><i class="fas fa-check"></i> Full SFTP/FTP File Access</li>
+            <li><i class="fas fa-check"></i> 24/7 Priority Support</li>
+          </ul>
+          <a href="/public/checkout.html?plan=Elite&type=game&price=499" class="plan-btn">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dedicated Minecraft Features -->
+  <section class="features">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Game Features</div>
+        <h2 class="section-title">Built Specially for <span class="gradient-text">Minecrafters</span></h2>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-file-code"></i></div>
+          <h4>Pterodactyl Panel</h4>
+          <p>Easily manage server files, install plugins, access the real-time console, schedule tasks, and control your server from a premium dashboard.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-box-open"></i></div>
+          <h4>1-Click Modpack Installer</h4>
+          <p>Support for major modpacks like Pixelmon, RL Craft, SkyFactory, Tekkit, Feed The Beast, and more with a single click install.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-history"></i></div>
+          <h4>Automated Backups</h4>
+          <p>Automatic daily backups protect your builds. Restore any version from the panel in seconds if a plugin crash occurs.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-network-wired"></i></div>
+          <h4>Subdomain & Port Routing</h4>
+          <p>Get a clean, easy-to-remember server address for free (e.g. `myserver.bulknode.in`) without paying extra fees.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2025 Bulk Node. All rights reserved. Made with ❤️ in India 🇮🇳</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

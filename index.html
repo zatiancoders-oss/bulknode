@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bulk Node - Game Server, VPS &amp; Web Hosting India</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Bulk Node offers high-performance game servers, VPS, and web hosting in India. Instant setup, NVMe storage, DDoS protection, and 24/7 support." />
+  <meta name="keywords" content="game server hosting india, minecraft hosting, vps hosting india, web hosting india, nvme hosting, ddos protection, bulk node" />
+  <meta name="author" content="Bulk Node" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Bulk Node - Game Server, VPS &amp; Web Hosting India" />
+  <meta property="og:description" content="High-performance game servers, VPS, and web hosting in India with NVMe storage and 24/7 support." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Particle Canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo" id="nav-logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="4" fill="url(#g1)"/>
+            <circle cx="8" cy="10" r="3" fill="url(#g1)" opacity="0.8"/>
+            <circle cx="32" cy="10" r="3" fill="url(#g1)" opacity="0.8"/>
+            <circle cx="8" cy="30" r="3" fill="url(#g1)" opacity="0.8"/>
+            <circle cx="32" cy="30" r="3" fill="url(#g1)" opacity="0.8"/>
+            <line x1="20" y1="20" x2="8" y2="10" stroke="url(#g2)" stroke-width="1.5"/>
+            <line x1="20" y1="20" x2="32" y2="10" stroke="url(#g2)" stroke-width="1.5"/>
+            <line x1="20" y1="20" x2="8" y2="30" stroke="url(#g2)" stroke-width="1.5"/>
+            <line x1="20" y1="20" x2="32" y2="30" stroke="url(#g2)" stroke-width="1.5"/>
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#00ff88"/>
+                <stop offset="100%" stop-color="#00cfff"/>
+              </linearGradient>
+              <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#00ff88" stop-opacity="0.6"/>
+                <stop offset="100%" stop-color="#00cfff" stop-opacity="0.6"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="logo-text">Bulk<span class="logo-accent">Node</span></span>
+      </a>
+
+      <div class="nav-links" id="nav-links">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/public/minecraft.html" class="nav-link">Minecraft</a>
+        <a href="/public/vps-hosting.html" class="nav-link">VPS</a>
+        <a href="/public/web-hosting.html" class="nav-link">Web Hosting</a>
+        <a href="/public/bot-hosting.html" class="nav-link">Bot Hosting</a>
+        <a href="/public/free-hosting.html" class="nav-link">Free Hosting</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="/public/auth.html" class="btn-outline-sm" id="login-btn">Login</a>
+        <a href="#pricing" class="btn-primary-sm" id="getstarted-btn">Get Started</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+
+    <div class="hero-container">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        🇮🇳 India's Fastest Game Server Provider
+      </div>
+      <h1 class="hero-title">
+        Power Your <span class="gradient-text">Game Servers</span><br/>
+        with <span class="gradient-text-2">Bulk Node</span>
+      </h1>
+      <p class="hero-subtitle">
+        High-performance game servers, VPS & web hosting with NVMe storage,<br/>
+        DDoS protection up to 6TB, and 24/7 expert support — all in India.
+      </p>
+      <div class="hero-actions">
+        <a href="#pricing" class="btn-hero-primary" id="hero-start-btn">
+          <i class="fas fa-rocket"></i> Start Hosting Now
+        </a>
+        <a href="https://discord.gg" target="_blank" class="btn-hero-discord" id="hero-discord-btn">
+          <i class="fab fa-discord"></i> Join Discord
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number" data-target="500">0</span><span class="stat-suffix">+</span>
+          <span class="stat-label">Active Servers</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="99">0</span><span class="stat-suffix">.9%</span>
+          <span class="stat-label">Uptime</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="2000">0</span><span class="stat-suffix">+</span>
+          <span class="stat-label">Happy Customers</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="24">0</span><span class="stat-suffix">/7</span>
+          <span class="stat-label">Support</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll-indicator">
+      <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Our Services</div>
+        <h2 class="section-title">Everything You Need to <span class="gradient-text">Host & Scale</span></h2>
+        <p class="section-subtitle">From Minecraft to full VPS deployments — we've got you covered with blazing-fast infrastructure.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card" id="service-game">
+          <div class="service-icon-wrap">
+            <div class="service-icon"><i class="fas fa-gamepad"></i></div>
+          </div>
+          <h3>Game Servers</h3>
+          <p>Instant-setup game servers optimized for Minecraft, Garry's Mod, ARK, Rust, and more. Low latency, high performance.</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i> Instant deployment</li>
+            <li><i class="fas fa-check"></i> Custom modpack support</li>
+            <li><i class="fas fa-check"></i> Discord panel control</li>
+          </ul>
+          <a href="/public/minecraft.html" class="service-cta">View Plans <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card featured" id="service-vps">
+          <div class="service-badge-card">Most Popular</div>
+          <div class="service-icon-wrap">
+            <div class="service-icon"><i class="fas fa-server"></i></div>
+          </div>
+          <h3>VPS Hosting</h3>
+          <p>Dedicated virtual private servers with full root access, NVMe SSD storage, and guaranteed resources.</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i> Full root access</li>
+            <li><i class="fas fa-check"></i> NVMe SSD storage</li>
+            <li><i class="fas fa-check"></i> Scalable resources</li>
+          </ul>
+          <a href="/public/vps-hosting.html" class="service-cta">View Plans <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card" id="service-web">
+          <div class="service-icon-wrap">
+            <div class="service-icon"><i class="fas fa-globe"></i></div>
+          </div>
+          <h3>Web Hosting</h3>
+          <p>Lightning-fast web hosting with cPanel, free SSL, one-click WordPress install, and 99.9% uptime guarantee.</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i> Free SSL certificate</li>
+            <li><i class="fas fa-check"></i> cPanel access</li>
+            <li><i class="fas fa-check"></i> 1-click installers</li>
+          </ul>
+          <a href="/public/web-hosting.html" class="service-cta">View Plans <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card" id="service-bot">
+          <div class="service-icon-wrap">
+            <div class="service-icon"><i class="fab fa-discord"></i></div>
+          </div>
+          <h3>Discord Bot Hosting</h3>
+          <p>Keep your Discord bots running 24/7 with our affordable bot hosting plans. Python, Node.js, and more.</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i> 24/7 uptime</li>
+            <li><i class="fas fa-check"></i> Multi-language support</li>
+            <li><i class="fas fa-check"></i> Easy file manager</li>
+          </ul>
+          <a href="/public/bot-hosting.html" class="service-cta">View Plans <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <div class="features-bg-glow"></div>
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Why Bulk Node</div>
+        <h2 class="section-title">Built for <span class="gradient-text">Performance</span> &amp; <span class="gradient-text-2">Reliability</span></h2>
+        <p class="section-subtitle">Enterprise-grade infrastructure at affordable prices, tailored for the Indian gaming community.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card" id="feat-nvme">
+          <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+          <h4>NVMe Storage</h4>
+          <p>Ultra-fast NVMe SSDs deliver 7x faster read/write speeds compared to traditional SSDs for instant server loading.</p>
+        </div>
+        <div class="feature-card" id="feat-ddos">
+          <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+          <h4>6TB DDoS Protection</h4>
+          <p>Industry-leading DDoS mitigation protecting your servers from attacks up to 6 Terabits per second.</p>
+        </div>
+        <div class="feature-card" id="feat-india">
+          <div class="feature-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <h4>India Data Centers</h4>
+          <p>Servers in Mumbai & Delhi ensure ultra-low latency (&lt;10ms) for Indian players — no more lag!</p>
+        </div>
+        <div class="feature-card" id="feat-discord">
+          <div class="feature-icon"><i class="fab fa-discord"></i></div>
+          <h4>Discord Panel</h4>
+          <p>Manage your servers directly via Discord commands. Start, stop, restart — all without leaving Discord.</p>
+        </div>
+        <div class="feature-card" id="feat-ai">
+          <div class="feature-icon"><i class="fas fa-robot"></i></div>
+          <h4>AI Support Bot</h4>
+          <p>Our BulkNode AI provides 24/7 technical assistance, server setup guidance, and instant troubleshooting.</p>
+        </div>
+        <div class="feature-card" id="feat-instant">
+          <div class="feature-icon"><i class="fas fa-rocket"></i></div>
+          <h4>Instant Setup</h4>
+          <p>Your server goes live in under 60 seconds after payment. No waiting, no manual provisioning.</p>
+        </div>
+        <div class="feature-card" id="feat-backup">
+          <div class="feature-icon"><i class="fas fa-database"></i></div>
+          <h4>Automated Backups</h4>
+          <p>Daily automated backups with one-click restore. Never lose your game world or server data again.</p>
+        </div>
+        <div class="feature-card" id="feat-support">
+          <div class="feature-icon"><i class="fas fa-headset"></i></div>
+          <h4>24/7 Expert Support</h4>
+          <p>Round-the-clock support from experienced technicians via Discord, ticket, or live chat.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Games Section -->
+  <section class="games" id="games">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Supported Games</div>
+        <h2 class="section-title">Host Your <span class="gradient-text">Favorite Games</span></h2>
+        <p class="section-subtitle">One-click deployment for 50+ popular games with pre-configured templates.</p>
+      </div>
+
+      <div class="games-grid">
+        <div class="game-card" id="game-minecraft">
+          <div class="game-icon"><i class="fas fa-cube"></i></div>
+          <span>Minecraft</span>
+        </div>
+        <div class="game-card" id="game-valheim">
+          <div class="game-icon"><i class="fas fa-khanda"></i></div>
+          <span>Valheim</span>
+        </div>
+        <div class="game-card" id="game-ark">
+          <div class="game-icon"><i class="fas fa-dragon"></i></div>
+          <span>ARK</span>
+        </div>
+        <div class="game-card" id="game-rust">
+          <div class="game-icon"><i class="fas fa-crosshairs"></i></div>
+          <span>Rust</span>
+        </div>
+        <div class="game-card" id="game-terraria">
+          <div class="game-icon"><i class="fas fa-tree"></i></div>
+          <span>Terraria</span>
+        </div>
+        <div class="game-card" id="game-gmod">
+          <div class="game-icon"><i class="fas fa-gamepad"></i></div>
+          <span>Garry's Mod</span>
+        </div>
+        <div class="game-card" id="game-cs2">
+          <div class="game-icon"><i class="fas fa-bullseye"></i></div>
+          <span>CS2</span>
+        </div>
+        <div class="game-card" id="game-fivem">
+          <div class="game-icon"><i class="fas fa-car"></i></div>
+          <span>FiveM</span>
+        </div>
+        <div class="game-card more" id="game-more">
+          <div class="game-icon"><i class="fas fa-plus"></i></div>
+          <span>50+ More</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="pricing" id="pricing">
+    <div class="pricing-bg-glow"></div>
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Pricing Plans</div>
+        <h2 class="section-title">Affordable Plans for <span class="gradient-text">Every Need</span></h2>
+        <p class="section-subtitle">No hidden fees. Choose your plan and scale anytime.</p>
+      </div>
+
+      <div class="pricing-toggle">
+        <span class="toggle-label active" id="toggle-game-label">Game Servers</span>
+        <div class="toggle-switch" id="pricing-toggle" role="button" tabindex="0">
+          <div class="toggle-knob"></div>
+        </div>
+        <span class="toggle-label" id="toggle-vps-label">VPS</span>
+      </div>
+
+      <!-- Game Server Pricing -->
+      <div class="pricing-grid" id="game-pricing">
+        <div class="pricing-card" id="plan-starter">
+          <div class="plan-name">Starter</div>
+          <div class="plan-price">
+            <span class="currency">₹</span>
+            <span class="amount">99</span>
+            <span class="period">/month</span>
+          </div>
+          <div class="plan-desc">Perfect for small friend groups</div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> 2GB RAM</li>
+            <li><i class="fas fa-check"></i> 2 vCPU Cores</li>
+            <li><i class="fas fa-check"></i> 20GB NVMe SSD</li>
+            <li><i class="fas fa-check"></i> DDoS Protection</li>
+            <li><i class="fas fa-check"></i> Discord Panel</li>
+            <li><i class="fas fa-check"></i> 24/7 Support</li>
+          </ul>
+          <a href="/public/checkout.html?plan=Starter&type=game&price=99" class="plan-btn" id="plan-starter-btn">Get Started</a>
+        </div>
+
+        <div class="pricing-card popular" id="plan-pro">
+          <div class="popular-badge">⭐ Most Popular</div>
+          <div class="plan-name">Pro</div>
+          <div class="plan-price">
+            <span class="currency">₹</span>
+            <span class="amount">249</span>
+            <span class="period">/month</span>
+          </div>
+          <div class="plan-desc">Great for active communities</div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> 6GB RAM</li>
+            <li><i class="fas fa-check"></i> 4 vCPU Cores</li>
+            <li><i class="fas fa-check"></i> 50GB NVMe SSD</li>
+            <li><i class="fas fa-check"></i> DDoS Protection</li>
+            <li><i class="fas fa-check"></i> Discord Panel</li>
+            <li><i class="fas fa-check"></i> Daily Backups</li>
+            <li><i class="fas fa-check"></i> Priority Support</li>
+          </ul>
+          <a href="/public/checkout.html?plan=Pro&type=game&price=249" class="plan-btn popular-btn" id="plan-pro-btn">Get Started</a>
+        </div>
+
+        <div class="pricing-card" id="plan-elite">
+          <div class="plan-name">Elite</div>
+          <div class="plan-price">
+            <span class="currency">₹</span>
+            <span class="amount">499</span>
+            <span class="period">/month</span>
+          </div>
+          <div class="plan-desc">For large servers and networks</div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> 16GB RAM</li>
+            <li><i class="fas fa-check"></i> 8 vCPU Cores</li>
+            <li><i class="fas fa-check"></i> 100GB NVMe SSD</li>
+            <li><i class="fas fa-check"></i> 6TB DDoS Protection</li>
+            <li><i class="fas fa-check"></i> Discord Panel</li>
+            <li><i class="fas fa-check"></i> Daily Backups</li>
+            <li><i class="fas fa-check"></i> Dedicated IP</li>
+            <li><i class="fas fa-check"></i> 24/7 Priority Support</li>
+          </ul>
+          <a href="/public/checkout.html?plan=Elite&type=game&price=499" class="plan-btn" id="plan-elite-btn">Get Started</a>
+        </div>
+      </div>
+
+      <!-- VPS Pricing -->
+      <div class="pricing-grid hidden" id="vps-pricing">
+        <div class="pricing-card" id="vps-nano">
+          <div class="plan-name">Nano VPS</div>
+          <div class="plan-price">
+            <span class="currency">₹</span>
+            <span class="amount">199</span>
+            <span class="period">/month</span>
+          </div>
+          <div class="plan-desc">Entry-level VPS for developers</div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> 2GB RAM</li>
+            <li><i class="fas fa-check"></i> 2 vCPU Cores</li>
+            <li><i class="fas fa-check"></i> 30GB NVMe SSD</li>
+            <li><i class="fas fa-check"></i> 1TB Bandwidth</li>
+            <li><i class="fas fa-check"></i> Full Root Access</li>
+            <li><i class="fas fa-check"></i> DDoS Protection</li>
+          </ul>
+          <a href="/public/checkout.html?plan=Nano+VPS&type=vps&price=199" class="plan-btn" id="vps-nano-btn">Get Started</a>
+        </div>
+
+        <div class="pricing-card popular" id="vps-pro">
+          <div class="popular-badge">⭐ Best Value</div>
+          <div class="plan-name">Pro VPS</div>
+          <div class="plan-price">
+            <span class="currency">₹</span>
+            <span class="amount">499</span>
+            <span class="period">/month</span>
+          </div>
+          <div class="plan-desc">Powerful VPS for projects</div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> 8GB RAM</li>
+            <li><i class="fas fa-check"></i> 4 vCPU Cores</li>
+            <li><i class="fas fa-check"></i> 80GB NVMe SSD</li>
+            <li><i class="fas fa-check"></i> 3TB Bandwidth</li>
+            <li><i class="fas fa-check"></i> Full Root Access</li>
+            <li><i class="fas fa-check"></i> DDoS Protection</li>
+            <li><i class="fas fa-check"></i> Daily Backups</li>
+          </ul>
+          <a href="/public/checkout.html?plan=Pro+VPS&type=vps&price=499" class="plan-btn popular-btn" id="vps-pro-btn">Get Started</a>
+        </div>
+
+        <div class="pricing-card" id="vps-ultra">
+          <div class="plan-name">Ultra VPS</div>
+          <div class="plan-price">
+            <span class="currency">₹</span>
+            <span class="amount">999</span>
+            <span class="period">/month</span>
+          </div>
+          <div class="plan-desc">Maximum power for businesses</div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> 16GB RAM</li>
+            <li><i class="fas fa-check"></i> 8 vCPU Cores</li>
+            <li><i class="fas fa-check"></i> 200GB NVMe SSD</li>
+            <li><i class="fas fa-check"></i> Unlimited Bandwidth</li>
+            <li><i class="fas fa-check"></i> Full Root Access</li>
+            <li><i class="fas fa-check"></i> 6TB DDoS Protection</li>
+            <li><i class="fas fa-check"></i> Daily Backups</li>
+            <li><i class="fas fa-check"></i> Dedicated IP</li>
+          </ul>
+          <a href="/public/checkout.html?plan=Ultra+VPS&type=vps&price=999" class="plan-btn" id="vps-ultra-btn">Get Started</a>
+        </div>
+      </div>
+
+      <div class="pricing-note">
+        <i class="fas fa-info-circle"></i>
+        All plans include a <strong>free subdomain</strong>, instant activation, and a <strong>3-day money-back guarantee</strong>.
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Testimonials</div>
+        <h2 class="section-title">What Our <span class="gradient-text">Customers Say</span></h2>
+      </div>
+
+      <div class="testimonials-track" id="testimonials-track">
+        <div class="testimonial-card" id="testimonial-1">
+          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+          <p>"Best game server hosting in India! My Minecraft server has zero lag and the setup was under a minute. Highly recommend!"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">R</div>
+            <div>
+              <div class="author-name">Rahul Sharma</div>
+              <div class="author-role">Minecraft Server Owner</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card" id="testimonial-2">
+          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+          <p>"The Discord panel feature is incredible! I manage my entire server without ever opening a browser. Customer support is top-notch too."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">P</div>
+            <div>
+              <div class="author-name">Priya Patel</div>
+              <div class="author-role">Community Manager</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card" id="testimonial-3">
+          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+          <p>"Switched from a foreign host to Bulk Node and my ping dropped from 180ms to 8ms. Absolutely incredible performance!"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">A</div>
+            <div>
+              <div class="author-name">Arjun Mehta</div>
+              <div class="author-role">ARK Server Admin</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card" id="testimonial-4">
+          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+          <p>"Affordable pricing and rock-solid uptime. Been with Bulk Node for 6 months and haven't had a single outage. Exceptional service!"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">V</div>
+            <div>
+              <div class="author-name">Vikram Singh</div>
+              <div class="author-role">FiveM Server Owner</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-dots" id="testimonial-dots">
+        <button class="dot active" data-index="0" id="dot-0"></button>
+        <button class="dot" data-index="1" id="dot-1"></button>
+        <button class="dot" data-index="2" id="dot-2"></button>
+        <button class="dot" data-index="3" id="dot-3"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">FAQ</div>
+        <h2 class="section-title">Frequently Asked <span class="gradient-text">Questions</span></h2>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item" id="faq-1">
+          <button class="faq-question" id="faq-btn-1">
+            <span>How quickly is my server set up after purchase?</span>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Your server is provisioned and live within 60 seconds of payment confirmation. You'll receive a Discord notification with all connection details instantly.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" id="faq-2">
+          <button class="faq-question" id="faq-btn-2">
+            <span>What payment methods do you accept?</span>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>We accept UPI, Net Banking, Credit/Debit Cards, Paytm, PhonePe, and international payments via PayPal and Stripe.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" id="faq-3">
+          <button class="faq-question" id="faq-btn-3">
+            <span>Do you offer a free plan?</span>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Yes! We offer a free tier with limited resources to let you try our platform. Free plans run on a best-effort basis and may not be 24/7. Upgrade anytime for guaranteed uptime.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" id="faq-4">
+          <button class="faq-question" id="faq-btn-4">
+            <span>Where are your servers located?</span>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Our primary data centers are in Mumbai and Delhi, India. This ensures ultra-low latency (&lt;10ms) for Indian players. We plan to expand to Bangalore and Hyderabad soon.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" id="faq-5">
+          <button class="faq-question" id="faq-btn-5">
+            <span>Can I upgrade or downgrade my plan anytime?</span>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Absolutely! You can scale your plan up or down at any time from the control panel. Resource changes are applied instantly with no downtime.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" id="faq-6">
+          <button class="faq-question" id="faq-btn-6">
+            <span>What is the Discord panel and how does it work?</span>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Our Discord panel allows you to manage your servers directly via Discord bot commands — start, stop, restart, view logs, and more — without ever needing to visit a web dashboard.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section" id="contact">
+    <div class="cta-glow"></div>
+    <div class="container">
+      <div class="cta-inner">
+        <h2>Ready to <span class="gradient-text">Level Up</span> Your Server?</h2>
+        <p>Join 2,000+ gamers and developers who trust Bulk Node for their hosting needs.</p>
+        <div class="cta-actions">
+          <a href="#pricing" class="btn-hero-primary" id="cta-start-btn">
+            <i class="fas fa-rocket"></i> Start Hosting Now
+          </a>
+          <a href="https://discord.gg" target="_blank" class="btn-hero-discord" id="cta-discord-btn">
+            <i class="fab fa-discord"></i> Join Our Discord
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo">
+            <div class="logo-icon">
+              <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="20" cy="20" r="4" fill="url(#fg1)"/>
+                <circle cx="8" cy="10" r="3" fill="url(#fg1)" opacity="0.8"/>
+                <circle cx="32" cy="10" r="3" fill="url(#fg1)" opacity="0.8"/>
+                <circle cx="8" cy="30" r="3" fill="url(#fg1)" opacity="0.8"/>
+                <circle cx="32" cy="30" r="3" fill="url(#fg1)" opacity="0.8"/>
+                <line x1="20" y1="20" x2="8" y2="10" stroke="url(#fg2)" stroke-width="1.5"/>
+                <line x1="20" y1="20" x2="32" y2="10" stroke="url(#fg2)" stroke-width="1.5"/>
+                <line x1="20" y1="20" x2="8" y2="30" stroke="url(#fg2)" stroke-width="1.5"/>
+                <line x1="20" y1="20" x2="32" y2="30" stroke="url(#fg2)" stroke-width="1.5"/>
+                <defs>
+                  <linearGradient id="fg1" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#00ff88"/>
+                    <stop offset="100%" stop-color="#00cfff"/>
+                  </linearGradient>
+                  <linearGradient id="fg2" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#00ff88" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="#00cfff" stop-opacity="0.6"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <span class="logo-text">Bulk<span class="logo-accent">Node</span></span>
+          </a>
+          <p class="footer-desc">India's most reliable game server, VPS, and web hosting provider. High performance, low latency, 24/7 support.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-link" id="footer-discord"><i class="fab fa-discord"></i></a>
+            <a href="#" class="social-link" id="footer-twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" class="social-link" id="footer-instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link" id="footer-youtube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-links-group">
+          <h5>Services</h5>
+          <ul>
+            <li><a href="#services">Game Servers</a></li>
+            <li><a href="#services">VPS Hosting</a></li>
+            <li><a href="#services">Web Hosting</a></li>
+            <li><a href="#services">Discord Bots</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-group">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Status Page</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-group">
+          <h5>Support</h5>
+          <ul>
+            <li><a href="#">Knowledge Base</a></li>
+            <li><a href="#">Open Ticket</a></li>
+            <li><a href="#">Discord Server</a></li>
+            <li><a href="#">System Status</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-group">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Refund Policy</a></li>
+            <li><a href="#">SLA</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Bulk Node. All rights reserved. Made with ❤️ in India 🇮🇳</p>
+        <div class="footer-payments">
+          <i class="fab fa-cc-visa"></i>
+          <i class="fab fa-cc-mastercard"></i>
+          <i class="fab fa-cc-paypal"></i>
+          <span class="upi-badge">UPI</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>

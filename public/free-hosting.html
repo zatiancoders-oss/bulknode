@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Game Server Hosting - Bulk Node</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+      font-size: 15px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--bg-card);
+    }
+    .comparison-table th, .comparison-table td {
+      padding: 16px 20px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .comparison-table th {
+      background: rgba(255, 255, 255, 0.02);
+      font-weight: 700;
+      color: var(--text-primary);
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+    }
+    .comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+    .check-yes {
+      color: var(--primary);
+    }
+    .check-no {
+      color: #ef4444;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Particle Canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Navigation -->
+  <nav class="navbar scrolled">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="4" fill="url(#g1)"/>
+            <circle cx="8" cy="10" r="3" fill="url(#g1)" opacity="0.8"/>
+            <circle cx="32" cy="10" r="3" fill="url(#g1)" opacity="0.8"/>
+            <circle cx="8" cy="30" r="3" fill="url(#g1)" opacity="0.8"/>
+            <circle cx="32" cy="30" r="3" fill="url(#g1)" opacity="0.8"/>
+            <line x1="20" y1="20" x2="8" y2="10" stroke="url(#g2)" stroke-width="1.5"/>
+            <line x1="20" y1="20" x2="32" y2="10" stroke="url(#g2)" stroke-width="1.5"/>
+            <line x1="20" y1="20" x2="8" y2="30" stroke="url(#g2)" stroke-width="1.5"/>
+            <line x1="20" y1="20" x2="32" y2="30" stroke="url(#g2)" stroke-width="1.5"/>
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#00ff88"/>
+                <stop offset="100%" stop-color="#00cfff"/>
+              </linearGradient>
+              <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#00ff88" stop-opacity="0.6"/>
+                <stop offset="100%" stop-color="#00cfff" stop-opacity="0.6"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="logo-text">Bulk<span class="logo-accent">Node</span></span>
+      </a>
+
+      <div class="nav-links">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/public/minecraft.html" class="nav-link">Minecraft</a>
+        <a href="/public/vps-hosting.html" class="nav-link">VPS</a>
+        <a href="/public/web-hosting.html" class="nav-link">Web Hosting</a>
+        <a href="/public/bot-hosting.html" class="nav-link">Bot Hosting</a>
+        <a href="/public/free-hosting.html" class="nav-link" style="color: var(--primary);">Free Hosting</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="/public/auth.html" class="btn-outline-sm">Login</a>
+        <a href="/public/auth.html" class="btn-primary-sm">Dashboard</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+    <div class="hero-container">
+      <div class="hero-badge">
+        <span class="badge-dot"></span> 🎁 Zero Cost Minecraft &amp; bot Containers
+      </div>
+      <h1 class="hero-title">
+        Free Server Hosting <span class="gradient-text">Via Discord</span><br/>
+        For Everyone
+      </h1>
+      <p class="hero-subtitle">
+        We believe hosting should be accessible to all. <br>
+        Claim a free 1GB Minecraft container or application server instantly by joining our Discord community.
+      </p>
+      <div class="hero-actions">
+        <a href="https://discord.gg" target="_blank" class="btn-hero-discord">
+          <i class="fab fa-discord"></i> Join Discord to Claim
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to claim section -->
+  <section class="features" style="padding-top: 50px;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">How It Works</div>
+        <h2 class="section-title">Claim Your Node in <span class="gradient-text">3 Simple Steps</span></h2>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fab fa-discord"></i></div>
+          <h4>1. Join Our Discord</h4>
+          <p>Click the discord action button above to link up with our active developer and gamer chat rooms.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-robot"></i></div>
+          <h4>2. Use Bot Commands</h4>
+          <p>Go to `#claim-free` chat channel and run our custom commands, e.g. `/create server-name game-template`.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-cog"></i></div>
+          <h4>3. Access Panel</h4>
+          <p>Our BulkNode bot will DM your panel credentials and node details in under 10 seconds.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Section -->
+  <section class="pricing" style="padding-top: 0;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Comparison</div>
+        <h2 class="section-title">Free vs. <span class="gradient-text">Premium Plans</span></h2>
+        <p class="section-subtitle">Review features of free tier hosting compared to paid server instances.</p>
+      </div>
+
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Free Tier</th>
+            <th>Premium Tier</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Server Uptime</strong></td>
+            <td>18 Hours (Automatic sleep on idle)</td>
+            <td><strong class="check-yes">24/7/365 (100% Uptime SLA)</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Dedicated Memory</strong></td>
+            <td>1 GB RAM</td>
+            <td><strong class="check-yes">2 GB to 16 GB Dedicated RAM</strong></td>
+          </tr>
+          <tr>
+            <td><strong>CPU Resources</strong></td>
+            <td>50% shared CPU Core</td>
+            <td><strong class="check-yes">1 to 8 dedicated Ryzen/Intel Cores</strong></td>
+          </tr>
+          <tr>
+            <td><strong>SSD Disk</strong></td>
+            <td>5 GB storage</td>
+            <td><strong class="check-yes">20 GB to 200 GB NVMe Storage</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Subdomains & Port</strong></td>
+            <td>Random Port (e.g. :18420)</td>
+            <td><strong class="check-yes">Custom Subdomain &amp; default port routing</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Technical Support</strong></td>
+            <td>Community Forums / Discord</td>
+            <td><strong class="check-yes">24/7 Priority Tickets &amp; Live Chat</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2025 Bulk Node. All rights reserved. Made with ❤️ in India 🇮🇳</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

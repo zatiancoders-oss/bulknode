@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Discord Bot Hosting India - Bulk Node</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+  <!-- Particle Canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Navigation -->
+  <nav class="navbar scrolled">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="4" fill="url(#g1)"/>
+            <circle cx="8" cy="10" r="3" fill="url(#g1)" opacity="0.8"/>
+            <circle cx="32" cy="10" r="3" fill="url(#g1)" opacity="0.8"/>
+            <circle cx="8" cy="30" r="3" fill="url(#g1)" opacity="0.8"/>
+            <circle cx="32" cy="30" r="3" fill="url(#g1)" opacity="0.8"/>
+            <line x1="20" y1="20" x2="8" y2="10" stroke="url(#g2)" stroke-width="1.5"/>
+            <line x1="20" y1="20" x2="32" y2="10" stroke="url(#g2)" stroke-width="1.5"/>
+            <line x1="20" y1="20" x2="8" y2="30" stroke="url(#g2)" stroke-width="1.5"/>
+            <line x1="20" y1="20" x2="32" y2="30" stroke="url(#g2)" stroke-width="1.5"/>
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#00ff88"/>
+                <stop offset="100%" stop-color="#00cfff"/>
+              </linearGradient>
+              <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#00ff88" stop-opacity="0.6"/>
+                <stop offset="100%" stop-color="#00cfff" stop-opacity="0.6"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="logo-text">Bulk<span class="logo-accent">Node</span></span>
+      </a>
+
+      <div class="nav-links">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/public/minecraft.html" class="nav-link">Minecraft</a>
+        <a href="/public/vps-hosting.html" class="nav-link">VPS</a>
+        <a href="/public/web-hosting.html" class="nav-link">Web Hosting</a>
+        <a href="/public/bot-hosting.html" class="nav-link" style="color: var(--primary);">Bot Hosting</a>
+        <a href="/public/free-hosting.html" class="nav-link">Free Hosting</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="/public/auth.html" class="btn-outline-sm">Login</a>
+        <a href="/public/auth.html" class="btn-primary-sm">Dashboard</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+    <div class="hero-container">
+      <div class="hero-badge">
+        <span class="badge-dot"></span> 🤖 24/7 Discord &amp; Telegram Bot Containers
+      </div>
+      <h1 class="hero-title">
+        High Uptime <span class="gradient-text">Bot Hosting</span><br/>
+        NodeJS, Python &amp; Java
+      </h1>
+      <p class="hero-subtitle">
+        Keep your community bots running 24/7/365 with zero downtime. <br>
+        Features automatic git push deployment, easy file editing, and low-latency API connections.
+      </p>
+      <div class="hero-actions">
+        <a href="#plans" class="btn-hero-primary">
+          <i class="fab fa-discord"></i> Host Bot Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bot Plans Section -->
+  <section class="pricing" id="plans" style="padding-top: 50px;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Bot Pricing</div>
+        <h2 class="section-title">Reliable <span class="gradient-text">App Containers</span></h2>
+        <p class="section-subtitle">Super cheap plans optimized for Node.js Discord.js, Python Discord.py, and JDA Java bots.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="plan-name">Micro Bot</div>
+          <div class="plan-price">
+            <span class="currency">₹</span>
+            <span class="amount">29</span>
+            <span class="period">/month</span>
+          </div>
+          <div class="plan-desc">For small and single guild bots</div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> 512MB RAM</li>
+            <li><i class="fas fa-check"></i> 50% CPU Core Share</li>
+            <li><i class="fas fa-check"></i> 5GB NVMe SSD</li>
+            <li><i class="fas fa-check"></i> Node / Python / Java</li>
+            <li><i class="fas fa-check"></i> Git Deploy Support</li>
+            <li><i class="fas fa-check"></i> Pterodactyl console</li>
+          </ul>
+          <a href="/public/checkout.html?plan=Micro+Bot&type=bot&price=29" class="plan-btn">Get Started</a>
+        </div>
+
+        <div class="pricing-card popular">
+          <div class="popular-badge">⭐ Recommended</div>
+          <div class="plan-name">Mega Bot</div>
+          <div class="plan-price">
+            <span class="currency">₹</span>
+            <span class="amount">79</span>
+            <span class="period">/month</span>
+          </div>
+          <div class="plan-desc">For advanced features and database integration</div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> 1.5GB RAM</li>
+            <li><i class="fas fa-check"></i> 100% Dedicated CPU Core</li>
+            <li><i class="fas fa-check"></i> 15GB NVMe SSD</li>
+            <li><i class="fas fa-check"></i> MongoDB / SQLite pre-installed</li>
+            <li><i class="fas fa-check"></i> 24/7 Guaranteed Uptime</li>
+            <li><i class="fas fa-check"></i> Auto logs restart on error</li>
+          </ul>
+          <a href="/public/checkout.html?plan=Mega+Bot&type=bot&price=79" class="plan-btn popular-btn">Get Started</a>
+        </div>
+
+        <div class="pricing-card">
+          <div class="plan-name">Giga Bot</div>
+          <div class="plan-price">
+            <span class="currency">₹</span>
+            <span class="amount">149</span>
+            <span class="period">/month</span>
+          </div>
+          <div class="plan-desc">For music bots and high guild counts</div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> 3GB RAM</li>
+            <li><i class="fas fa-check"></i> 2 vCPU Cores</li>
+            <li><i class="fas fa-check"></i> 30GB NVMe SSD</li>
+            <li><i class="fas fa-check"></i> Music streams audio optimization</li>
+            <li><i class="fas fa-check"></i> Unlimited file uploads</li>
+            <li><i class="fas fa-check"></i> Priority Expert support</li>
+          </ul>
+          <a href="/public/checkout.html?plan=Giga+Bot&type=bot&price=149" class="plan-btn">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Features -->
+  <section class="features">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Runtime</div>
+        <h2 class="section-title">Developer Friendly <span class="gradient-text">Environments</span></h2>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fab fa-node-js"></i></div>
+          <h4>NodeJS Support</h4>
+          <p>Full support for latest Node runtimes. Easily configure `package.json` to load discord.js or erela.js modules instantly.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fab fa-python"></i></div>
+          <h4>Python Support</h4>
+          <p>Run discord.py, nextcord, or interactions.py libraries. Virtualenv environment setup isolates libraries for error-free executions.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-terminal"></i></div>
+          <h4>Startup Command Config</h4>
+          <p>Choose custom parameters or version flags directly from our panels to execute startup scripts your way.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-plug"></i></div>
+          <h4>SQLite &amp; JSON Storage</h4>
+          <p>Quick file structure databases are fully supported. Restarts do not wipe SQLite files or active configurations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2025 Bulk Node. All rights reserved. Made with ❤️ in India 🇮🇳</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KVM VPS Hosting India - Bulk Node</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+  <!-- Particle Canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Navigation -->
+  <nav class="navbar scrolled">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="4" fill="url(#g1)"/>
+            <circle cx="8" cy="10" r="3" fill="url(#g1)" opacity="0.8"/>
+            <circle cx="32" cy="10" r="3" fill="url(#g1)" opacity="0.8"/>
+            <circle cx="8" cy="30" r="3" fill="url(#g1)" opacity="0.8"/>
+            <circle cx="32" cy="30" r="3" fill="url(#g1)" opacity="0.8"/>
+            <line x1="20" y1="20" x2="8" y2="10" stroke="url(#g2)" stroke-width="1.5"/>
+            <line x1="20" y1="20" x2="32" y2="10" stroke="url(#g2)" stroke-width="1.5"/>
+            <line x1="20" y1="20" x2="8" y2="30" stroke="url(#g2)" stroke-width="1.5"/>
+            <line x1="20" y1="20" x2="32" y2="30" stroke="url(#g2)" stroke-width="1.5"/>
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#00ff88"/>
+                <stop offset="100%" stop-color="#00cfff"/>
+              </linearGradient>
+              <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#00ff88" stop-opacity="0.6"/>
+                <stop offset="100%" stop-color="#00cfff" stop-opacity="0.6"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="logo-text">Bulk<span class="logo-accent">Node</span></span>
+      </a>
+
+      <div class="nav-links">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/public/minecraft.html" class="nav-link">Minecraft</a>
+        <a href="/public/vps-hosting.html" class="nav-link" style="color: var(--primary);">VPS</a>
+        <a href="/public/web-hosting.html" class="nav-link">Web Hosting</a>
+        <a href="/public/bot-hosting.html" class="nav-link">Bot Hosting</a>
+        <a href="/public/free-hosting.html" class="nav-link">Free Hosting</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="/public/auth.html" class="btn-outline-sm">Login</a>
+        <a href="/public/auth.html" class="btn-primary-sm">Dashboard</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+    <div class="hero-container">
+      <div class="hero-badge">
+        <span class="badge-dot"></span> 🌐 High-Performance Cloud VPS Instances
+      </div>
+      <h1 class="hero-title">
+        Enterprise Grade <span class="gradient-text">KVM VPS Hosting</span><br/>
+        Mumbai &amp; Delhi
+      </h1>
+      <p class="hero-subtitle">
+        Deploy fully scalable virtual private servers with complete root SSH access. <br>
+        Guaranteed resource shares, lightning-fast NVMe storage, and DDoS protection up to 6TB.
+      </p>
+      <div class="hero-actions">
+        <a href="#plans" class="btn-hero-primary">
+          <i class="fas fa-server"></i> Choose VPS Plan
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- VPS Plans Section -->
+  <section class="pricing" id="plans" style="padding-top: 50px;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">VPS Pricing</div>
+        <h2 class="section-title">Root Access <span class="gradient-text">Virtual Servers</span></h2>
+        <p class="section-subtitle">Select standard packages or request custom CPU/RAM setups. Instant provisioning.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="plan-name">Nano VPS</div>
+          <div class="plan-price">
+            <span class="currency">₹</span>
+            <span class="amount">199</span>
+            <span class="period">/month</span>
+          </div>
+          <div class="plan-desc">For testing and lightweight scripts</div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> 2GB DDR4 RAM</li>
+            <li><i class="fas fa-check"></i> 2 vCPU Cores (Intel Xeon)</li>
+            <li><i class="fas fa-check"></i> 30GB NVMe SSD</li>
+            <li><i class="fas fa-check"></i> 1TB Monthly Bandwidth</li>
+            <li><i class="fas fa-check"></i> Full Root Access (SSH)</li>
+            <li><i class="fas fa-check"></i> 1 Dedicated IPv4</li>
+          </ul>
+          <a href="/public/checkout.html?plan=Nano+VPS&type=vps&price=199" class="plan-btn">Get Started</a>
+        </div>
+
+        <div class="pricing-card popular">
+          <div class="popular-badge">⭐ Recommended</div>
+          <div class="plan-name">Pro VPS</div>
+          <div class="plan-price">
+            <span class="currency">₹</span>
+            <span class="amount">499</span>
+            <span class="period">/month</span>
+          </div>
+          <div class="plan-desc">For web apps, databases, and servers</div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> 8GB DDR4 RAM</li>
+            <li><i class="fas fa-check"></i> 4 vCPU Cores (Intel Xeon)</li>
+            <li><i class="fas fa-check"></i> 80GB NVMe SSD</li>
+            <li><i class="fas fa-check"></i> 3TB Monthly Bandwidth</li>
+            <li><i class="fas fa-check"></i> KVM Virtualization</li>
+            <li><i class="fas fa-check"></i> OS Reinstall / VNC Panel</li>
+          </ul>
+          <a href="/public/checkout.html?plan=Pro+VPS&type=vps&price=499" class="plan-btn popular-btn">Get Started</a>
+        </div>
+
+        <div class="pricing-card">
+          <div class="plan-name">Ultra VPS</div>
+          <div class="plan-price">
+            <span class="currency">₹</span>
+            <span class="amount">999</span>
+            <span class="period">/month</span>
+          </div>
+          <div class="plan-desc">High capacity production nodes</div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> 16GB DDR4 RAM</li>
+            <li><i class="fas fa-check"></i> 8 vCPU Cores (Intel Xeon)</li>
+            <li><i class="fas fa-check"></i> 200GB NVMe SSD</li>
+            <li><i class="fas fa-check"></i> Unlimited Bandwidth</li>
+            <li><i class="fas fa-check"></i> dedicated Mumbai Node</li>
+            <li><i class="fas fa-check"></i> 24/7 Enterprise SLA</li>
+          </ul>
+          <a href="/public/checkout.html?plan=Ultra+VPS&type=vps&price=999" class="plan-btn">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Features -->
+  <section class="features">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Infrastructure</div>
+        <h2 class="section-title">Built on <span class="gradient-text">Solid Architecture</span></h2>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-terminal"></i></div>
+          <h4>Full SSH Root Access</h4>
+          <p>Unrestricted administrative privileges. Control your environment, configure system services, and compile programs from scratch.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-layer-group"></i></div>
+          <h4>KVM Virtualization</h4>
+          <p>Guaranteed CPU and RAM shares. No over-selling. Kernel-based Virtual Machine ensures your virtual instances run isolated with maximum performance.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-cloud-download-alt"></i></div>
+          <h4>OS Templates Selector</h4>
+          <p>Instantly deploy various Linux operating systems (Ubuntu, Debian, CentOS, AlmaLinux, Rocky Linux) or custom ISO files via dashboard.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-shield-virus"></i></div>
+          <h4>Advanced Firewall Rules</h4>
+          <p>Manage port forwarding policies, establish private subnet bridges, and activate anti-DDoS filters directly from your panel settings.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2025 Bulk Node. All rights reserved. Made with ❤️ in India 🇮🇳</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
