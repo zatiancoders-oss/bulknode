@@ -1,8 +1,14 @@
 {
-  "rewrites": [
+  "version": 2,
+  "functions": {
+    "index.js": {
+      "includeFiles": "{style.css,script.js,index.html,public/**}"
+    }
+  },
+  "routes": [
     {
-      "source": "/api/(.*)",
-      "destination": "/index.js"
+      "src": "/(.*)",
+      "dest": "/index.js"
     }
   ]
 }
