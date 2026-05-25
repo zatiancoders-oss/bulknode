@@ -55,9 +55,13 @@ function writeDB(data) {
 }
 
 // Ensure database file exists
-if (!fs.existsSync(DB_PATH)) {
-  fs.mkdirSync(path.join(__dirname, 'data'), { recursive: true });
-  writeDB({ users: [], servers: [], tickets: [] });
+try {
+  if (!fs.existsSync(DB_PATH)) {
+    fs.mkdirSync(path.join(__dirname, 'data'), { recursive: true });
+    writeDB({ users: [], servers: [], tickets: [] });
+  }
+} catch (err) {
+  console.warn("⚠️ Read-only filesystem detected (Vercel Serverless environment). Local JSON DB persistence will be unavailable. Database operations will use Supabase remote storage.");
 }
 
 // --- Middleware: Verify JWT Token ---
@@ -593,3 +597,5 @@ app.get('*', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
 });
+
+module.exports = app;
