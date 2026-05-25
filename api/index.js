@@ -10,14 +10,14 @@ const { createClient } = require('@supabase/supabase-js');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const JWT_SECRET = 'bulknode_super_secret_jwt_key_2026';
-const DB_PATH = path.join(__dirname, 'data', 'db.json');
+const DB_PATH = path.join(__dirname, '..', 'data', 'db.json');
 
 app.use(cors());
 app.use(express.json());
 
-// Serve static assets from root and public directories
-app.use(express.static(__dirname));
-app.use('/public', express.static(path.join(__dirname, 'public')));
+// Serve static assets from root and public directories (for local dev fallback)
+app.use(express.static(path.join(__dirname, '..')));
+app.use('/public', express.static(path.join(__dirname, '..', 'public')));
 
 // Initialize Supabase if keys are provided
 let supabase = null;
@@ -56,8 +56,11 @@ function writeDB(data) {
 
 // Ensure database file exists
 try {
+  const dataDir = path.join(__dirname, '..', 'data');
+  if (!fs.existsSync(dataDir)) {
+    fs.mkdirSync(dataDir, { recursive: true });
+  }
   if (!fs.existsSync(DB_PATH)) {
-    fs.mkdirSync(path.join(__dirname, 'data'), { recursive: true });
     writeDB({ users: [], servers: [], tickets: [] });
   }
 } catch (err) {
@@ -510,7 +513,7 @@ app.post('/api/tickets', authenticateToken, async (req, res) => {
       res.status(500).json({ error: "Failed to file ticket" });
     }
   } else {
-    const db = readDB();
+    const db = db = readDB();
     const localTicket = {
       ...newTicketData,
       userId: req.user.id
@@ -589,9 +592,9 @@ app.post('/api/tickets/:id/reply', authenticateToken, async (req, res) => {
   }
 });
 
-// Catch-all to serve index.html for UI refresh
+// Catch-all to serve index.html for UI refresh (for local testing runs)
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
 
 app.listen(PORT, () => {
