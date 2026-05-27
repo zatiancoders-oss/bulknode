@@ -27,7 +27,7 @@ class Particle {
     this.speedX = (Math.random() - 0.5) * 0.4;
     this.speedY = (Math.random() - 0.5) * 0.4;
     this.opacity = Math.random() * 0.6 + 0.1;
-    this.color = Math.random() > 0.5 ? '#00ff88' : '#00cfff';
+    this.color = Math.random() > 0.5 ? '#7c3aed' : '#e879f9';
   }
   update() {
     this.x += this.speedX;
@@ -66,7 +66,7 @@ function drawConnections() {
       if (dist < 120) {
         ctx.save();
         ctx.globalAlpha = (1 - dist / 120) * 0.15;
-        ctx.strokeStyle = '#00ff88';
+        ctx.strokeStyle = '#7c3aed';
         ctx.lineWidth = 0.5;
         ctx.beginPath();
         ctx.moveTo(particles[i].x, particles[i].y);
@@ -319,7 +319,7 @@ for (let i = 0; i < TRAIL_COUNT; i++) {
     width: ${4 + i * 0.5}px;
     height: ${4 + i * 0.5}px;
     border-radius: 50%;
-    background: rgba(0, 255, 136, ${0.4 - i * 0.03});
+    background: rgba(124, 58, 237, ${0.4 - i * 0.03});
     pointer-events: none;
     z-index: 9999;
     transition: all ${50 + i * 20}ms ease;

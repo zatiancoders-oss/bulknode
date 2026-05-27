@@ -5,31 +5,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap');
 
 :root {
-  --primary: #00ff88;
-  --primary-dim: rgba(0, 255, 136, 0.1);
-  --secondary: #00cfff;
-  --secondary-dim: rgba(0, 207, 255, 0.1);
-  --accent: #7c3aed;
-  --accent-dim: rgba(124, 58, 237, 0.15);
+  --primary: #7c3aed;
+  --primary-dim: rgba(124, 58, 237, 0.15);
+  --secondary: #e879f9;
+  --secondary-dim: rgba(232, 121, 249, 0.15);
+  --accent: #a855f7;
+  --accent-dim: rgba(168, 85, 247, 0.2);
 
-  --bg-base: #020710;
-  --bg-sidebar: #040d1c;
-  --bg-card: rgba(255, 255, 255, 0.03);
-  --bg-card-hover: rgba(255, 255, 255, 0.06);
+  --bg-base: #080810;
+  --bg-sidebar: #0d0d18;
+  --bg-card: #0f0f1e;
+  --bg-card-hover: #13132a;
   --bg-input: rgba(255, 255, 255, 0.02);
 
-  --text-primary: #f0f6ff;
-  --text-secondary: #8ba0bb;
-  --text-muted: #4a5e72;
+  --text-primary: #f0f0ff;
+  --text-secondary: #9090b8;
+  --text-muted: #5a5a80;
 
-  --border: rgba(255, 255, 255, 0.07);
-  --border-bright: rgba(0, 255, 136, 0.25);
+  --border: rgba(130, 80, 255, 0.15);
+  --border-bright: rgba(232, 121, 249, 0.35);
 
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 20px;
 
-  --shadow-glow: 0 0 30px rgba(0, 255, 136, 0.1);
+  --shadow-glow: 0 0 30px rgba(124, 58, 237, 0.35);
 }
 
 /* Base Styles */
@@ -66,8 +66,8 @@ body {
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background: radial-gradient(circle at 10% 20%, rgba(0, 255, 136, 0.03) 0%, transparent 40%),
-              radial-gradient(circle at 90% 80%, rgba(0, 207, 255, 0.03) 0%, transparent 40%);
+  background: radial-gradient(circle at 10% 20%, rgba(124, 58, 237, 0.03) 0%, transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(232, 121, 249, 0.03) 0%, transparent 40%);
   position: relative;
 }
 
@@ -982,4 +982,35 @@ body {
     margin-left: 0;
     padding: 24px;
   }
+}
+
+/* Mesh Background for Dashboard Context */
+.mesh {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 15% 20%, rgba(124, 58, 237, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 35% at 85% 75%, rgba(232, 121, 249, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 50% 50%, rgba(124, 58, 237, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Custom Status Badge Colors */
+.status-badge.pending_payment {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  color: #f59e0b;
+}
+
+.status-badge.installing {
+  background: rgba(168, 85, 247, 0.1);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  color: #a855f7;
+}
+
+.status-badge.suspended {
+  background: rgba(107, 114, 128, 0.1);
+  border: 1px solid rgba(107, 114, 128, 0.25);
+  color: #9ca3af;
 }

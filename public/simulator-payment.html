@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zenuxs Payments Gateway (Sandbox)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="dashboard.css">
+  <style>
+    .payment-wrapper {
+      max-width: 500px;
+      margin: 80px auto;
+      padding: 0 24px;
+    }
+    .payment-card {
+      background: rgba(15, 15, 30, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      box-shadow: var(--shadow-glow);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .payment-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(232, 121, 249, 0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .gateway-logo {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .gateway-badge {
+      background: rgba(168, 85, 247, 0.15);
+      border: 1px solid var(--border-bright);
+      color: var(--secondary);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 50px;
+      display: inline-block;
+      margin-bottom: 24px;
+    }
+    .payment-amount {
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      font-family: 'Outfit', sans-serif;
+    }
+    .payment-purpose {
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+    }
+    .payment-details-table {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      margin-bottom: 32px;
+      font-size: 13px;
+      text-align: left;
+    }
+    .details-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .details-row:last-child {
+      margin-bottom: 0;
+    }
+    .details-row span {
+      color: var(--text-muted);
+    }
+    .details-row strong {
+      color: var(--text-primary);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .btn-payment-success {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #fff;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      border: none;
+      width: 100%;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .btn-payment-success:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(16, 185, 129, 0.5);
+    }
+    .btn-payment-fail {
+      background: none;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #ef4444;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 12px;
+      border-radius: var(--radius-sm);
+      width: 100%;
+      cursor: pointer;
+      margin-top: 12px;
+      transition: all 0.2s ease;
+    }
+    .btn-payment-fail:hover {
+      background: rgba(239, 68, 68, 0.05);
+      border-color: #ef4444;
+    }
+    .loader-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-card);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .loader-overlay.visible {
+      opacity: 1;
+      pointer-events: all;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mesh Background -->
+  <div class="mesh"></div>
+
+  <div class="payment-wrapper">
+    <div class="payment-card animate-fade-in">
+      
+      <!-- Loader Overlay -->
+      <div class="loader-overlay" id="loader-overlay">
+        <div class="spinner"></div>
+        <h3 id="loader-status" style="font-size: 20px; font-weight: 700; margin-top: 20px; color: var(--text-primary);">Processing Transaction...</h3>
+        <p id="loader-sub" style="font-size: 13px; color: var(--text-secondary); margin-top: 8px;">Contacting merchant database and updating cloud records.</p>
+      </div>
+
+      <div class="gateway-logo">
+        <span style="color: var(--secondary);"><i class="fas fa-wallet"></i></span>
+        <span>Zenuxs<span style="color: var(--secondary);">Payments</span></span>
+      </div>
+
+      <div>
+        <span class="gateway-badge"><i class="fas fa-flask"></i> Sandbox Simulator</span>
+      </div>
+
+      <div class="payment-amount" id="amount-val">₹0.00</div>
+      <div class="payment-purpose" id="purpose-val">BulkNode Cloud Instance</div>
+
+      <div class="payment-details-table">
+        <div class="details-row">
+          <span>Merchant ID:</span>
+          <strong>BulkNode Sandbox</strong>
+        </div>
+        <div class="details-row">
+          <span>Server Node ID:</span>
+          <strong id="server-id-val">srv_pending</strong>
+        </div>
+        <div class="details-row">
+          <span>Order ID:</span>
+          <strong id="order-id-val">zenuxs_sim_xxxx</strong>
+        </div>
+        <div class="details-row">
+          <span>Status:</span>
+          <strong style="color: #f59e0b;"><i class="fas fa-clock"></i> Pending</strong>
+        </div>
+      </div>
+
+      <button class="btn-payment-success" id="btn-success">
+        Simulate Payment Success <i class="fas fa-check-circle"></i>
+      </button>
+
+      <button class="btn-payment-fail" id="btn-fail">
+        Simulate Payment Failure <i class="fas fa-times-circle"></i>
+      </button>
+
+    </div>
+  </div>
+
+  <script>
+    // Get query params
+    const urlParams = new URLSearchParams(window.location.search);
+    const serverId = urlParams.get('serverId') || 'srv_unknown';
+    const price = urlParams.get('price') || '0';
+    const plan = urlParams.get('plan') || 'Starter';
+
+    // Populate UI
+    document.getElementById('amount-val').textContent = '₹' + price;
+    document.getElementById('purpose-val').textContent = 'BulkNode ' + plan + ' Server';
+    document.getElementById('server-id-val').textContent = serverId;
+    
+    // Generate pseudo Order ID
+    const randomOrderId = 'zenuxs_sim_' + Math.random().toString(36).substr(2, 9).toUpperCase();
+    document.getElementById('order-id-val').textContent = randomOrderId;
+
+    const loader = document.getElementById('loader-overlay');
+    const loaderStatus = document.getElementById('loader-status');
+    const loaderSub = document.getElementById('loader-sub');
+
+    // Success Handler
+    document.getElementById('btn-success').addEventListener('click', async () => {
+      loader.classList.add('visible');
+      
+      // Simulate API lag
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      loaderStatus.textContent = "Updating server status...";
+      loaderSub.textContent = "Deploying Pterodactyl container allocations on Bharat-Free node.";
+
+      try {
+        const response = await fetch('/api/payments/simulate-success', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ serverId })
+        });
+
+        if (!response.ok) {
+          throw new Error("Activation request failed");
+        }
+
+        loaderStatus.innerHTML = `<span style="color: #10b981;"><i class="fas fa-check-circle"></i> Payment Captured!</span>`;
+        loaderSub.textContent = "Redirecting back to client panel dashboard.";
+        await new Promise(resolve => setTimeout(resolve, 1200));
+        
+        // Redirect to dashboard
+        window.location.href = '/public/dashboard.html';
+      } catch (err) {
+        loader.classList.remove('visible');
+        alert("Verification error: " + err.message);
+      }
+    });
+
+    // Failure Handler
+    document.getElementById('btn-fail').addEventListener('click', () => {
+      alert("Payment simulation aborted. Your server will remain in pending_payment status.");
+      window.location.href = '/public/dashboard.html';
+    });
+  </script>
+</body>
+</html>

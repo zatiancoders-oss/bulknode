@@ -10,6 +10,9 @@
 </head>
 <body>
 
+  <!-- Mesh Background -->
+  <div class="mesh"></div>
+
   <div class="dashboard-layout">
     <!-- Sidebar Navigation -->
     <aside class="sidebar" id="sidebar">
@@ -101,56 +104,88 @@
             </form>
           </div>
 
-          <!-- Status Resource Meter Panel -->
-          <div class="status-card">
-            <h3>Resource Usage</h3>
-            
-            <div class="metric-item">
-              <div class="metric-label-wrap">
-                <span>CPU Core Load</span>
-                <span id="metric-cpu-text">0%</span>
+          <!-- Right Column Container -->
+          <div style="display: flex; flex-direction: column; gap: 24px; width: 100%;">
+            <!-- Status Resource Meter Panel -->
+            <div class="status-card" style="margin: 0; width: 100%;">
+              <h3>Resource Usage</h3>
+              
+              <div class="metric-item">
+                <div class="metric-label-wrap">
+                  <span>CPU Core Load</span>
+                  <span id="metric-cpu-text">0%</span>
+                </div>
+                <div class="metric-progress-bg">
+                  <div class="metric-progress-fill" id="metric-cpu-fill" style="width: 0%;"></div>
+                </div>
               </div>
-              <div class="metric-progress-bg">
-                <div class="metric-progress-fill" id="metric-cpu-fill" style="width: 0%;"></div>
+
+              <div class="metric-item">
+                <div class="metric-label-wrap">
+                  <span>RAM Allocation</span>
+                  <span id="metric-ram-text">0 MB / 0 MB</span>
+                </div>
+                <div class="metric-progress-bg">
+                  <div class="metric-progress-fill" id="metric-ram-fill" style="width: 0%;"></div>
+                </div>
+              </div>
+
+              <div class="metric-item">
+                <div class="metric-label-wrap">
+                  <span>SSD Storage Space</span>
+                  <span id="metric-disk-text">0 GB / 0 GB</span>
+                </div>
+                <div class="metric-progress-bg">
+                  <div class="metric-progress-fill" id="metric-disk-fill" style="width: 0%;"></div>
+                </div>
+              </div>
+
+              <div style="margin-top: 32px; border-top: 1px solid var(--border); padding-top: 20px; font-size: 13px; color: var(--text-secondary);">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                  <span>Container ID:</span>
+                  <span id="detail-server-id" style="font-family: 'JetBrains Mono', monospace;">srv_123</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                  <span>Location Node:</span>
+                  <span>Mumbai-Core-Node-1</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                  <span>Server Software:</span>
+                  <span id="detail-server-game">Minecraft</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span>Container Uptime:</span>
+                  <span id="detail-server-uptime">0s</span>
+                </div>
               </div>
             </div>
 
-            <div class="metric-item">
-              <div class="metric-label-wrap">
-                <span>RAM Allocation</span>
-                <span id="metric-ram-text">0 MB / 0 MB</span>
+            <!-- Pterodactyl Account Card -->
+            <div class="status-card" style="margin: 0; width: 100%;" id="ptero-account-card">
+              <h3>Pterodactyl Panel Account</h3>
+              <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 16px;">
+                Manage your credentials for the pterodactyl control panel.
+              </p>
+              <div style="margin-top: 16px; border-top: 1px solid var(--border); padding-top: 16px;">
+                <a href="https://clients.bulknodes.xyz" target="_blank" class="btn-primary-sm" style="display: block; text-align: center; text-decoration: none; margin-bottom: 12px; background: linear-gradient(135deg, var(--primary), var(--secondary));">
+                  <i class="fas fa-external-link-alt"></i> Open Pterodactyl Panel
+                </a>
+                <button class="btn-outline-sm" id="btn-reset-password" style="width: 100%; justify-content: center; padding: 10px; font-family: inherit;">
+                  <i class="fas fa-key"></i> Auto-Reset Panel Password
+                </button>
               </div>
-              <div class="metric-progress-bg">
-                <div class="metric-progress-fill" id="metric-ram-fill" style="width: 0%;"></div>
-              </div>
-            </div>
-
-            <div class="metric-item">
-              <div class="metric-label-wrap">
-                <span>SSD Storage Space</span>
-                <span id="metric-disk-text">0 GB / 0 GB</span>
-              </div>
-              <div class="metric-progress-bg">
-                <div class="metric-progress-fill" id="metric-disk-fill" style="width: 0%;"></div>
-              </div>
-            </div>
-
-            <div style="margin-top: 32px; border-top: 1px solid var(--border); padding-top: 20px; font-size: 13px; color: var(--text-secondary);">
-              <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                <span>Container ID:</span>
-                <span id="detail-server-id" style="font-family: 'JetBrains Mono', monospace;">srv_123</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                <span>Location Node:</span>
-                <span>Mumbai-Core-Node-1</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                <span>Server Software:</span>
-                <span id="detail-server-game">Minecraft</span>
-              </div>
-              <div style="display: flex; justify-content: space-between;">
-                <span>Container Uptime:</span>
-                <span id="detail-server-uptime">0s</span>
+              
+              <div id="reset-password-box" style="display: none; margin-top: 16px; background: var(--bg-sidebar); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px; font-size: 13px;">
+                <span style="color: var(--text-secondary); font-weight: 500;">Your New Password:</span>
+                <div style="display: flex; gap: 8px; margin-top: 8px; align-items: center;">
+                  <input type="text" id="new-password-val" class="input-control" readonly style="font-family: 'JetBrains Mono', monospace; font-size: 12px; padding: 6px 10px; flex: 1; background: #010409; border: 1px solid var(--border); color: #fff;">
+                  <button id="btn-copy-pass" class="btn-primary-sm" style="padding: 6px 10px; font-family: inherit;" title="Copy to clipboard">
+                    <i class="far fa-copy"></i>
+                  </button>
+                </div>
+                <span style="font-size: 10px; color: var(--text-muted); margin-top: 6px; display: block;">
+                  Copy this password immediately. This password will not be shown again.
+                </span>
               </div>
             </div>
           </div>

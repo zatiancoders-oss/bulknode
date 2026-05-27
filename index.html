@@ -30,6 +30,15 @@
   <!-- Particle Canvas -->
   <canvas id="particles-canvas"></canvas>
 
+  <!-- Mesh Background -->
+  <div class="mesh"></div>
+
+  <!-- Announcement Bar -->
+  <div class="ann-bar">
+    <span class="ann-badge">PROMO</span>
+    <span>Use code <strong>SBOOSTS</strong> for 10% off high performance VPS plans!</span>
+  </div>
+
   <!-- Navigation -->
   <nav class="navbar" id="navbar">
     <div class="nav-container">
@@ -330,6 +339,25 @@
 
       <!-- Game Server Pricing -->
       <div class="pricing-grid" id="game-pricing">
+        <div class="pricing-card" id="plan-free">
+          <div class="plan-name">Free Plan</div>
+          <div class="plan-price">
+            <span class="currency">₹</span>
+            <span class="amount">0</span>
+            <span class="period">/month</span>
+          </div>
+          <div class="plan-desc">Perfect to test server performance</div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> 6GB RAM</li>
+            <li><i class="fas fa-check"></i> 100% CPU Share</li>
+            <li><i class="fas fa-check"></i> 7GB NVMe SSD</li>
+            <li><i class="fas fa-check"></i> DDoS Protection</li>
+            <li><i class="fas fa-check"></i> 0 Backups & Databases</li>
+            <li><i class="fas fa-check"></i> Pterodactyl Panel</li>
+          </ul>
+          <a href="/public/checkout.html?plan=Free+Plan&type=game&price=0" class="plan-btn" id="plan-free-btn">Claim Free Node</a>
+        </div>
+
         <div class="pricing-card" id="plan-starter">
           <div class="plan-name">Starter</div>
           <div class="plan-price">

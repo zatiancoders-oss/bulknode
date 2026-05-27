@@ -84,7 +84,7 @@ async function loadServers() {
               <span>${server.plan} • ${server.game}</span>
             </div>
           </div>
-          <span class="status-badge ${server.status}">${server.status}</span>
+          <span class="status-badge ${server.status}">${server.status.replace('_', ' ')}</span>
         </div>
 
         <div class="server-card-stats">
@@ -107,7 +107,14 @@ async function loadServers() {
             <i class="fas fa-network-wired"></i>
             <span>${server.ip}</span>
           </div>
-          <button class="btn-manage" onclick="manageServer('${server.id}')">Manage <i class="fas fa-cog"></i></button>
+          <div style="display: flex; gap: 8px; align-items: center;">
+            ${!server.id.startsWith('srv_') ? `
+              <a href="https://clients.bulknodes.xyz" target="_blank" class="btn-primary-sm" style="padding: 6px 10px; font-size: 11px; text-decoration: none; background: linear-gradient(135deg, var(--primary), var(--secondary)); display: inline-flex; align-items: center; gap: 4px; border-radius: var(--radius-sm);" title="Open Pterodactyl Panel">
+                <i class="fas fa-external-link-alt"></i> Panel
+              </a>
+            ` : ''}
+            <button class="btn-manage" onclick="manageServer('${server.id}')">Manage <i class="fas fa-cog"></i></button>
+          </div>
         </div>
       `;
       serversContainer.appendChild(card);
@@ -139,9 +146,30 @@ async function manageServer(serverId) {
 
     // Populate Details elements
     document.getElementById('detail-server-name').textContent = server.name;
-    document.getElementById('detail-server-ip').innerHTML = `<i class="fas fa-network-wired"></i> IP Endpoint: ${server.ip}`;
+    document.getElementById('detail-server-ip').innerHTML = `
+      <i class="fas fa-network-wired"></i> IP Endpoint: ${server.ip}
+      ${!server.id.startsWith('srv_') ? `
+        <span style="margin-left: 12px;">
+          <a href="https://clients.bulknodes.xyz" target="_blank" style="color: var(--secondary); text-decoration: none; font-size: 12px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px;">
+            <i class="fas fa-external-link-alt"></i> Panel Login
+          </a>
+        </span>
+      ` : ''}
+    `;
     document.getElementById('detail-server-id').textContent = server.id;
     document.getElementById('detail-server-game').textContent = server.game;
+
+    // Toggle Pterodactyl Account Card Visibility
+    const pteroCard = document.getElementById('ptero-account-card');
+    if (pteroCard) {
+      pteroCard.style.display = server.id.startsWith('srv_') ? 'none' : 'block';
+    }
+
+    // Reset password box state
+    const resetBox = document.getElementById('reset-password-box');
+    const passVal = document.getElementById('new-password-val');
+    if (resetBox) resetBox.style.display = 'none';
+    if (passVal) passVal.value = '';
 
     updateServerStatusUI(server);
     startTerminalLogSim(server);
@@ -155,21 +183,32 @@ async function manageServer(serverId) {
 // Update status details
 function updateServerStatusUI(server) {
   const badge = document.getElementById('detail-server-status');
-  badge.textContent = server.status;
+  badge.textContent = server.status.replace('_', ' ');
   badge.className = `status-badge ${server.status}`;
 
   document.getElementById('detail-server-uptime').textContent = server.status === 'online' ? (server.uptime || '5m 12s') : '0s';
 
   // Toggle Actions active states based on status
-  document.getElementById('action-start').disabled = server.status === 'online';
-  document.getElementById('action-restart').disabled = server.status !== 'online';
-  document.getElementById('action-stop').disabled = server.status !== 'online';
+  if (server.status === 'pending_payment') {
+    document.getElementById('action-start').disabled = true;
+    document.getElementById('action-restart').disabled = true;
+    document.getElementById('action-stop').disabled = true;
+  } else {
+    document.getElementById('action-start').disabled = server.status === 'online';
+    document.getElementById('action-restart').disabled = server.status !== 'online';
+    document.getElementById('action-stop').disabled = server.status !== 'online';
+  }
 }
 
 // Streaming logs simulation
 function startTerminalLogSim(server) {
   const terminal = document.getElementById('console-terminal-log');
   terminal.innerHTML = '';
+
+  if (server.status === 'pending_payment') {
+    terminal.innerHTML = `[Payment Gateway]: Waiting for payment capture to provision container resources.\nIf you are using the simulator, click the checkout link or pay using sandbox options.`;
+    return;
+  }
 
   if (server.status === 'offline') {
     terminal.innerHTML = `[Console System]: Server container is stopped. Click START above to power up node.`;
@@ -316,6 +355,56 @@ document.getElementById('form-console-cmd').addEventListener('submit', async (e)
     terminal.scrollTop = terminal.scrollHeight;
   }
 });
+
+// Password Reset Handler
+const btnResetPassword = document.getElementById('btn-reset-password');
+const resetPasswordBox = document.getElementById('reset-password-box');
+const newPasswordVal = document.getElementById('new-password-val');
+const btnCopyPass = document.getElementById('btn-copy-pass');
+
+if (btnResetPassword) {
+  btnResetPassword.addEventListener('click', async () => {
+    if (!confirm("Are you sure you want to reset your Pterodactyl Panel password? A strong secure password will be generated automatically.")) {
+      return;
+    }
+    
+    btnResetPassword.disabled = true;
+    btnResetPassword.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Resetting Password...`;
+    
+    try {
+      const res = await fetch('/api/user/reset-panel-password', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      const data = await res.json();
+      
+      if (!res.ok) throw new Error(data.error || "Failed to reset password");
+      
+      newPasswordVal.value = data.password;
+      resetPasswordBox.style.display = 'block';
+      alert("Password successfully reset! Copy the new password below.");
+    } catch (err) {
+      alert("Password Reset Failed: " + err.message);
+    } finally {
+      btnResetPassword.disabled = false;
+      btnResetPassword.innerHTML = `<i class="fas fa-key"></i> Auto-Reset Panel Password`;
+    }
+  });
+}
+
+if (btnCopyPass) {
+  btnCopyPass.addEventListener('click', () => {
+    newPasswordVal.select();
+    newPasswordVal.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(newPasswordVal.value);
+    btnCopyPass.innerHTML = `<i class="fas fa-check" style="color: #10b981;"></i>`;
+    setTimeout(() => {
+      btnCopyPass.innerHTML = `<i class="far fa-copy"></i>`;
+    }, 2000);
+  });
+}
 
 // Expose managing function globally
 window.manageServer = manageServer;
